@@ -140,8 +140,6 @@ class NewUserMessage {
 		$talk = $user->getTalkPage();
 
 		if ( !$talk->exists() ) {
-			wfLoadExtensionMessages( 'NewUserMessage' );
-
 			$subject = self::fetchSubject();
 			$text = self::fetchText();
 			$signature = self::fetchSignature();
@@ -177,7 +175,6 @@ class NewUserMessage {
 	 * @param $names Array
 	 */
 	static function onUserGetReservedNames( &$names ) {
-		wfLoadExtensionMessages( 'NewUserMessage' );
 		$names[] = 'msg:newusermessage-editor';
 		return true;
 	}
