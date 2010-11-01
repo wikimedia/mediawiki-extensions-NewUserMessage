@@ -260,6 +260,7 @@ $messages['frp'] = array(
  */
 $messages['fur'] = array(
 	'newusermessage-desc' => 'Zonte un messaç inte pagjine di discussion di un utent apene regjistrât',
+	'newuseredit-summary' => 'O zonti [[{{int:newusermessage-template}}|un messaç di benvignût]] ae pagjine di discussion di un gnûf utent',
 );
 
 /** Galician (Galego)
