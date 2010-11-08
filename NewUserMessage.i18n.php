@@ -73,6 +73,14 @@ $messages['ast'] = array(
 	'newuseredit-summary' => "Añadiendo [[{{int:newusermessage-template}}|mensaxe de bienvenida]] a la nueva páxina d'alderique d'usuariu",
 );
 
+/** Bashkir (Башҡорт)
+ * @author Assele
+ */
+$messages['ba'] = array(
+	'newusermessage-desc' => 'Яңы теркәлгән ҡатнашыусының фекер алышыу битенә хәбәр өҫтәй',
+	'newuseredit-summary' => 'Яңы теркәлгән ҡатнашыусының фекер алышыу битенә [[{{int:newusermessage-template}}|сәләмләү хәбәре]] өҫтәү',
+);
+
 /** Bavarian (Boarisch)
  * @author Man77
  */
