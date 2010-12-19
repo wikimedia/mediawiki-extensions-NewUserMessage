@@ -605,6 +605,14 @@ $messages['sah'] = array(
 	'newuseredit-summary' => 'Саҥа кыттааччы ырытыытын сирэйигэр [[{{int:newusermessage-template}}|эҕэрдэ сурук]] эбэр',
 );
 
+/** Sinhala (සිංහල)
+ * @author Budhajeewa
+ */
+$messages['si'] = array(
+	'newusermessage-desc' => 'අලුතින් සැකසූ පරිශීලකයන්ගේ සාකච්ඡා පිටුවලට පණිවුඩයක් එක් කරයි',
+	'newuseredit-summary' => 'නව පරිශීලකයාගේ සාකච්ඡා පිටුවට [[{{int:newusermessage-template}}|පිළිගැනුම් පණිවුඩයක්]] එක් කරමින්',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
