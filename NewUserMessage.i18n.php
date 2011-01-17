@@ -754,9 +754,10 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Alexsh
+ * @author Mark85296341
  */
 $messages['zh-hant'] = array(
-	'newusermessage-desc' => '增加一個訊息給新創建帳戶的使用者的討論頁。',
+	'newusermessage-desc' => '增加一個訊息給新建立帳號的使用者的討論頁。',
 	'newuseredit-summary' => '在新用戶的討論頁上增加[[{{int:newusermessage-template}}|歡迎訊息]]',
 );
 
