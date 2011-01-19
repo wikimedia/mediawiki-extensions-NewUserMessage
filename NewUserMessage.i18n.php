@@ -133,6 +133,14 @@ $messages['ca'] = array(
 	'newuseredit-summary' => "Afegint [[{{int:newusermessage-template}}|missatge de benvinguda]] a la pàgina de discussió de l'usuari",
 );
 
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'newusermessage-desc' => 'Чутуху хаам керла дlавазвеллачу декъашхочуьна дийцаре агlончу',
+	'newuseredit-summary' => 'Чутуху [[{{int:newusermessage-template}}|марша вогlийла]] керла декъашхон дийцаре агlончу',
+);
+
 /** Czech (Česky)
  * @author Li-sung
  * @author Matěj Grabovský
