@@ -40,6 +40,7 @@ class NewUserMessage {
 
 		if ( !wfEmptyMsg( 'newusermessage-signatures', $signatures ) ) {
 			$pattern = '/^\* ?(.*?)$/m';
+			$signatureList = array();
 			preg_match_all( $pattern, $signatures, $signatureList, PREG_SET_ORDER );
 			if ( count( $signatureList ) > 0 ) {
 				$rand = rand( 0, count( $signatureList ) - 1 );
