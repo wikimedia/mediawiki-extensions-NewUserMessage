@@ -141,6 +141,7 @@ class NewUserMessage {
 		$talk = $user->getTalkPage();
 
 		if ( !$talk->exists() ) {
+			$article = new Article( $talk );
 			$subject = self::fetchSubject();
 			$text = self::fetchText();
 			$signature = self::fetchSignature();
@@ -151,8 +152,8 @@ class NewUserMessage {
 			$subject = self::substString( $subject, $user, $editor, $talk, "preparse" );
 			$text = self::substString( $text, $user, $editor, $talk );
 
-			return $user->leaveUserMessage( $subject, $text, $signature, $editSummary,
-				$editor, $flags );
+			return self::leaveUserMessage( $user, $article, $subject, $text, 
+				$signature, $editSummary, $editor, $flags );
 		}
 	}
 
@@ -178,5 +179,63 @@ class NewUserMessage {
 	static function onUserGetReservedNames( &$names ) {
 		$names[] = 'msg:newusermessage-editor';
 		return true;
+	}
+	
+	/**
+	 * Leave a user a message
+	 * @param $subject String the subject of the message
+	 * @param $text String the message to leave
+	 * @param $signature String Text to leave in the signature
+	 * @param $summary String the summary for this change, defaults to
+	 *                        "Leave system message."
+	 * @param $editor User The user leaving the message, defaults to
+	 *                        "{{MediaWiki:usermessage-editor}}"
+	 * @param $flags Int default edit flags
+	 *
+	 * @return boolean true if it was successful
+	 */
+	public static function leaveUserMessage( $user, $article, $subject, $text, $signature,
+			$summary, $editor, $flags ) {
+
+		$text = self::formatUserMessage( $subject, $text, $signature );
+		$flags = $article->checkFlags( $flags );
+
+		if ( $flags & EDIT_UPDATE ) {
+			$text = $article->getContent() . $text;
+		}
+
+		$dbw = wfGetDB( DB_MASTER );
+		$dbw->begin();
+
+		try {
+			$status = $article->doEdit( $text, $summary, $flags, false, $editor );
+		} catch ( DBQueryError $e ) {
+			$status = Status::newFatal( 'DB Error' );
+		}
+
+		if ( $status->isGood() ) {
+			// Set newtalk with the right user ID
+			$user->setNewtalk( true );
+			$dbw->commit();
+		} else {
+			// The article was concurrently created
+			wfDebug( __METHOD__ . ": Error ".$status->getWikiText() );
+			$dbw->rollback();
+		}
+
+		return $status->isGood();
+	}
+	
+	/**
+	 * Format the user message using a hook, a template, or, failing these, a static format.
+	 * @param $subject   String the subject of the message
+	 * @param $text      String the content of the message
+	 * @param $signature String the signature, if provided.
+	 */
+	static protected function formatUserMessage( $subject, $text, $signature ) {
+		$signature = empty($signature) ? "~~~~~" : "{$signature} ~~~~~";
+		$text = "\n== $subject ==\n\n$text\n\n-- $signature";
+
+		return $text;
 	}
 }
