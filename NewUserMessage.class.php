@@ -84,7 +84,12 @@ class NewUserMessage {
 	 * @returns String
 	 */
 	static function fetchText() {
-		return self::fetchTemplateIfExists( wfMsg( 'newusermessage-template-body' ) );
+		$text = self::fetchTemplateIfExists( wfMsg( 'newusermessage-template-body' ) );
+		// Fall back if necessary to the old template
+		if ( !$text ) {
+			$text = self::fetchTemplateIfExists( wfMsg( 'newusermessage-template' ) );
+		}
+		return $text;
 	}
 
 	/**
@@ -149,8 +154,12 @@ class NewUserMessage {
 			$editor = self::fetchEditor();
 			$flags = self::fetchFlags();
 
-			$subject = self::substString( $subject, $user, $editor, $talk, "preparse" );
-			$text = self::substString( $text, $user, $editor, $talk );
+			if ( $subject ) {
+				$subject = self::substString( $subject, $user, $editor, $talk, "preparse" );
+			}
+			if ( $text ) {
+				$text = self::substString( $text, $user, $editor, $talk );
+			}
 
 			return self::leaveUserMessage( $user, $article, $subject, $text, 
 				$signature, $editSummary, $editor, $flags );
@@ -233,9 +242,14 @@ class NewUserMessage {
 	 * @param $signature String the signature, if provided.
 	 */
 	static protected function formatUserMessage( $subject, $text, $signature ) {
-		$signature = empty($signature) ? "~~~~~" : "{$signature} ~~~~~";
-		$text = "\n== $subject ==\n\n$text\n\n-- $signature";
+		$contents = "\n";
+		$signature = empty( $signature ) ? "~~~~~" : "{$signature} ~~~~~";
+		
+		if ( $subject ) {
+			$contents .= "== $subject ==\n";
+		}
+		$contents .= "\n$text\n\n-- $signature\n";
 
-		return $text;
+		return $contents;
 	}
 }
