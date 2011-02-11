@@ -161,8 +161,10 @@ class NewUserMessage {
 				$text = self::substString( $text, $user, $editor, $talk );
 			}
 
-			return self::leaveUserMessage( $user, $article, $subject, $text, 
+			self::leaveUserMessage( $user, $article, $subject, $text, 
 				$signature, $editSummary, $editor, $flags );
+				
+			return true;
 		}
 	}
 
@@ -205,7 +207,6 @@ class NewUserMessage {
 	 */
 	public static function leaveUserMessage( $user, $article, $subject, $text, $signature,
 			$summary, $editor, $flags ) {
-
 		$text = self::formatUserMessage( $subject, $text, $signature );
 		$flags = $article->checkFlags( $flags );
 
