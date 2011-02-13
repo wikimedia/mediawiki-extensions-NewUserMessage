@@ -80,16 +80,16 @@ class NewUserMessage {
 	}
 
 	/**
-	 * Produce the text of the message.
+	 * Produce the template that contains the text of the message.
 	 * @returns String
 	 */
 	static function fetchText() {
-		$text = self::fetchTemplateIfExists( wfMsg( 'newusermessage-template-body' ) );
+		$template = wfMsg( 'newusermessage-template-body' );
 		// Fall back if necessary to the old template
-		if ( !$text ) {
-			$text = self::fetchTemplateIfExists( wfMsg( 'newusermessage-template' ) );
+		if ( !$template ) {
+			$template = wfMsg( 'newusermessage-template' );
 		}
-		return $text;
+		return $template;
 	}
 
 	/**
@@ -124,9 +124,9 @@ class NewUserMessage {
 		$substitute = wfMsgForContent( 'newusermessage-substitute' );
 
 		if ( $substitute ) {
-			$str = "{{subst:{{$str}}}|realName=$realName|name=$name}}";
+			$str = '{{subst:' . "$str|realName=$realName|name=$name}}";
 		} else {
-			$str = "{{{$str}|realName=$realName|name=$name}}";
+			$str = '{{' . "$str|realName=$realName|name=$name}}";
 		}
 
 		if ( $preparse ) {
