@@ -644,6 +644,14 @@ $messages['sl'] = array(
 	'newuseredit-summary' => 'Dodajanje [[{{int:newusermessage-template}}|pozdravnega sporočila]] na pogovorno stran novega uporabnika',
 );
 
+/** Albanian (Shqip)
+ * @author Olsi
+ */
+$messages['sq'] = array(
+	'newusermessage-desc' => 'Shton një mesazh tek faqja e diskutimit e përdoruesit më të ri',
+	'newuseredit-summary' => 'Duke shtuar [[{{int:newusermessage-template}}|mesazhin mirëseardhës]] tek faqja e diskutimit e përdoruesit të ri',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */
