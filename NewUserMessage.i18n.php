@@ -23,10 +23,10 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Bryan Tong Minh
  * @author Purodha
  * @author Siebrand
  * @author The Evil IP address
- * @author Bryan Tong Minh
  */
 $messages['qqq'] = array(
 	'newusermessage-desc' => '{{desc}}',
