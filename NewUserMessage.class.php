@@ -85,11 +85,14 @@ class NewUserMessage {
 	 */
 	static function fetchText() {
 		$template = wfMsg( 'newusermessage-template-body' );
-		// Fall back if necessary to the old template
-		if ( !$template ) {
-			$template = wfMsg( 'newusermessage-template' );
+		
+		$title = Title::newFromText( $template );
+		if ( $title && $title->exists() && $title->getLength() ) {
+			return $template;
 		}
-		return $template;
+		
+		// Fall back if necessary to the old template
+		return wfMsg( 'newusermessage-template' );
 	}
 
 	/**
