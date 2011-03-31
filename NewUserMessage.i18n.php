@@ -752,6 +752,14 @@ $messages['vo'] = array(
 	'newuseredit-summary' => '[[{{int:newusermessage-template}}|Benokömanun]] paläükon lä bespikapad gebana nulik',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'newusermessage-desc' => 'צולייגן א מעלדונג צו שמועס בלעטער פֿון נײַע באַניצער',
+	'newuseredit-summary' => 'צולייגן [[{{int:newusermessage-template}}|ברוך הבא מעלדונג]] צו שמועס בלאַט פֿון נײַעם באַניצער',
+);
+
 /** Yoruba (Yorùbá)
  * @author Demmy
  */
