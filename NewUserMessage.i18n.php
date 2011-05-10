@@ -174,10 +174,11 @@ $messages['da'] = array(
 );
 
 /** German (Deutsch)
+ * @author Kghbln
  * @author Raimond Spekking
  */
 $messages['de'] = array(
-	'newusermessage-desc' => 'Fügt eine Nachricht auf der Benutzerdiskussionsseiten neu angemeldeter Benutzer hinzu',
+	'newusermessage-desc' => 'Fügt der Benutzerdiskussionsseite neu angemeldeter Benutzer eine Nachricht hinzu',
 	'newuseredit-summary' => 'Begrüßt einen neuen Benutzer auf seiner Diskussionsseite mit einer [[{{int:newusermessage-template}}|Willkommensnachricht]]',
 );
 
