@@ -23,6 +23,11 @@ class NewUserMessage {
 		// Create a user object for the editing user and add it to the
 		// database if it is not there already
 		$editor = User::newFromName( wfMsgForContent( 'newusermessage-editor' ) );
+
+		if( !$editor ) {
+			return false; # Invalid user name
+		}
+
 		if ( !$editor->isLoggedIn() ) {
 			$editor->addToDatabase();
 		}
@@ -157,8 +162,8 @@ class NewUserMessage {
 			$editor = self::fetchEditor();
 			$flags = self::fetchFlags();
 
-			# Do not add a message if the account that adds it, is blocked
-			if( $editor->isBlocked() ) {
+			# Do not add a message if the username is invalid or if the account that adds it, is blocked
+			if( !$editor || $editor->isBlocked() ) {
 				return true;
 			}
 
