@@ -12,7 +12,7 @@
 if ( !defined( 'MEDIAWIKI' ) )
 	die( 'Not an entry point.' );
 
-define( 'NEWUSERMESSAGE_VERSION', '3.1, 2010-05-10' );
+define( 'NEWUSERMESSAGE_VERSION', '3.2, 2011-07-14' );
 
 $wgNewUserSuppressRC = false;           // Specify whether or not the new user message creation should show up in recent changes
 $wgNewUserMinorEdit = true;             // Should the new user message creation be a minor edit?

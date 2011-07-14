@@ -157,6 +157,11 @@ class NewUserMessage {
 			$editor = self::fetchEditor();
 			$flags = self::fetchFlags();
 
+			# Do not add a message if the account that adds it, is blocked
+			if( $editor->isBlocked() ) {
+				return true;
+			}
+
 			if ( $subject ) {
 				$subject = self::substString( $subject, $user, $editor, $talk, "preparse" );
 			}
