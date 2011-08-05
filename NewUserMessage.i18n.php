@@ -429,6 +429,14 @@ $messages['ksh'] = array(
 	'newuseredit-summary' => 'Donn de neu Metmaachere_ene [[{{int:newusermessage-template}}|Bejröhßungstex]] op ier Klaaf-Sigg.',
 );
 
+/** Ladino (Ladino)
+ * @author Universal Life
+ */
+$messages['lad'] = array(
+	'newusermessage-desc' => 'Àjusta un messaje a la hoja de usador de los usadores muevo crîados',
+	'newuseredit-summary' => 'Àjustando [[{{int:newusermessage-template}}|messaje de venido bueno]] a la hoja de usador del muevo usador',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
