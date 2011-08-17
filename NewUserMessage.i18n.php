@@ -624,7 +624,7 @@ $messages['rue'] = array(
 	'newuseredit-summary' => 'Приданя [[{{int:newusermessage-template}}|привітаня]] на діскузну сторінку нового хоснователя',
 );
 
-/** Yakut (Саха тыла)
+/** Sakha (Саха тыла)
  * @author HalanTul
  */
 $messages['sah'] = array(
