@@ -567,6 +567,13 @@ $messages['pms'] = array(
 	'newuseredit-summary' => "I gionto [[{{int:newusermessage-template}}|messagi ëd bin ëvnù]] a la pàgina ëd discussion d'un neuv utent",
 );
 
+/** Western Punjabi (پنجابی)
+ * @author Khalid Mahmood
+ */
+$messages['pnb'] = array(
+	'newusermessage-desc' => 'نویں ورتن آلے دی گل بات دے صفے تے صنیعہ پیجو',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
