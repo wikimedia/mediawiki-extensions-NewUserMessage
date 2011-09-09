@@ -224,7 +224,7 @@ class NewUserMessage {
 		$flags = $article->checkFlags( $flags );
 
 		if ( $flags & EDIT_UPDATE ) {
-			$text = $article->getContent() . $text;
+			$text = $article->getRawText() . $text;
 		}
 
 		$dbw = wfGetDB( DB_MASTER );
