@@ -551,6 +551,14 @@ $messages['oc'] = array(
 	'newuseredit-summary' => 'Apond [[{{int:newusermessage-template}}|un messatge de benvenguda]] dins la pagina de discussion d’un utilizaire novèl',
 );
 
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Psubhashish
+ */
+$messages['or'] = array(
+	'newusermessage-desc' => 'ନୂଆ ଯୋଗ ଦେଇଥିବା ସଭ୍ୟଙ୍କ ଆଲୋଚନା ପୃଷ୍ଠାସବୁରେ ନୂଆ ସନ୍ଦେଶଟିଏ ଦେଇଥାଏ',
+	'newuseredit-summary' => 'ନୂଆ ସଭ୍ୟଙ୍କ ଆଲୋଚନା ପୃଷ୍ଠାରେ [[{{int:newusermessage-template}}|ପାଛୋଟା ସନ୍ଦେଶ]] ଯୋଗ କରୁଅଛୁଁ',
+);
+
 /** Polish (Polski)
  * @author Derbeth
  */
