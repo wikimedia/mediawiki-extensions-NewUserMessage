@@ -580,6 +580,7 @@ $messages['pms'] = array(
  */
 $messages['pnb'] = array(
 	'newusermessage-desc' => 'نویں ورتن آلے دی گل بات دے صفے تے صنیعہ پیجو',
+	'newuseredit-summary' => '[[{{int:newusermessage-template}}|جی آیاں نوں سنیعہ]] نویں ورتن والے دے گل بات والے صفے تے جوڑو',
 );
 
 /** Pashto (پښتو)
