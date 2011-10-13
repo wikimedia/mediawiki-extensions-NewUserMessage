@@ -176,9 +176,8 @@ class NewUserMessage {
 
 			self::leaveUserMessage( $user, $article, $subject, $text, 
 				$signature, $editSummary, $editor, $flags );
-				
-			return true;
 		}
+		return true;
 	}
 
 	/**
