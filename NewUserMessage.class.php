@@ -17,7 +17,7 @@ class NewUserMessage {
 
 	/**
 	 * Produce the editor for new user messages.
-	 * @returns User
+	 * @return User
 	 */
 	static function fetchEditor() {
 		// Create a user object for the editing user and add it to the
@@ -37,7 +37,7 @@ class NewUserMessage {
 
 	/**
 	 * Produce a (possibly random) signature.
-	 * @returns String
+	 * @return String
 	 */
 	static function fetchSignature() {
 		$signatures = wfMsgForContent( 'newusermessage-signatures' );
@@ -58,7 +58,7 @@ class NewUserMessage {
 
 	/**
 	 * Return the template name if it exists, or '' otherwise.
-	 * @returns string
+	 * @return string
 	 */
 	static function fetchTemplateIfExists( $template ) {
 		$text = Title::newFromText( $template );
@@ -78,7 +78,7 @@ class NewUserMessage {
 
 	/**
 	 * Produce a subject for the message.
-	 * @returns String
+	 * @return String
 	 */
 	static function fetchSubject() {
 		return self::fetchTemplateIfExists( wfMsg( 'newusermessage-template-subject' ) );
@@ -86,7 +86,7 @@ class NewUserMessage {
 
 	/**
 	 * Produce the template that contains the text of the message.
-	 * @returns String
+	 * @return String
 	 */
 	static function fetchText() {
 		$template = wfMsg( 'newusermessage-template-body' );
@@ -102,7 +102,7 @@ class NewUserMessage {
 
 	/**
 	 * Produce the flags to set on Article::doEdit
-	 * @returns Int
+	 * @return Int
 	 */
 	static function fetchFlags() {
 		global $wgNewUserMinorEdit, $wgNewUserSuppressRC;
@@ -121,7 +121,7 @@ class NewUserMessage {
 	 * @param $editor User
 	 * @param $talk Article
 	 * @param $preparse if provided, then preparse the string using a Parser
-	 * @returns String
+	 * @return String
 	 */
 	static private function substString( $str, $user, $editor, $talk, $preparse = null ) {
 		$realName = $user->getRealName();
