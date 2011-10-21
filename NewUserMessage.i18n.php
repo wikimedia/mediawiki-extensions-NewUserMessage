@@ -680,6 +680,14 @@ $messages['sq'] = array(
 	'newuseredit-summary' => 'Duke shtuar [[{{int:newusermessage-template}}|mesazhin mirëseardhës]] tek faqja e diskutimit e përdoruesit të ri',
 );
 
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
+ * @author Rancher
+ */
+$messages['sr-ec'] = array(
+	'newusermessage-desc' => 'Поставља поруку на странице за разговор нових корисника',
+	'newuseredit-summary' => 'Додавање [[{{int:newusermessage-template}}|добродошлице]] на страницу за разговор новог корисника',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */
