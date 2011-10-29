@@ -800,6 +800,7 @@ $messages['yi'] = array(
  */
 $messages['yo'] = array(
 	'newusermessage-desc' => 'Àfikún ìránṣẹ́ kan kún àwọn ojúewé ọ̀rọ̀ oníṣe dídá tuntun',
+	'newuseredit-summary' => 'Ìfikún [[{{int:newusermessage-template}}|ẹkúàbọ̀]] sí ojùewé ọ̀rọ̀ oníṣe tuntun',
 );
 
 /** Cantonese (粵語)
