@@ -90,10 +90,11 @@ $messages['ba'] = array(
 
 /** Bavarian (Boarisch)
  * @author Man77
+ * @author Mucalexx
  */
 $messages['bar'] = array(
-	'newusermessage-desc' => 'Fügt auf de Benutza-Diskussionsseitn vu neich ãngmöidte Benutza a Nåchricht ei',
-	'newuseredit-summary' => 'Begrüßt an neichn Benutza auf seina Diskussionsseitn mid ana [[{{int:newusermessage-template}}|Begriaßungsbotschåft]]',
+	'newusermessage-desc' => 'Fiagt da Benutzerdischkrierseiten voh neich auhgmödte Benutzer a Noochricht dazua',
+	'newuseredit-summary' => 'Begriasst an neichen Benutzer auf seiner Dischkrierseiten mid ner [[{{int:newusermessage-template}}|Begriassungsbóutschoft]]',
 );
 
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
