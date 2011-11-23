@@ -30,11 +30,6 @@ $messages['en'] = array(
  */
 $messages['qqq'] = array(
 	'newusermessage-desc' => '{{desc}}',
-	'newuseredit-summary' => 'Edit summary used leaving the message',
-	'newusermessage-template' => 'The title of the message template. This template is only used as fallback when newusermessage-template-body does not exist or is empty',  
-	'newusermessage-template-subject' => 'The template for the section heading or thread subject. Do not translate or duplicate this message to other languages',
-	'newusermessage-template-body' => 'The template for the section content of thread content. Do not translate or duplicate this message to other languages',
-	'newusermessage-editor' => 'The username used for the edit',
 	'newuseredit-summary' => 'The edit summary used when placing a new user message.',
 );
 
