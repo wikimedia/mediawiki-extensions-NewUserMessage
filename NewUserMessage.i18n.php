@@ -271,8 +271,8 @@ $messages['fr'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
-	'newusermessage-desc' => 'Apond un mèssâjo dens la pâge de discussion a un novél utilisator.',
-	'newuseredit-summary' => 'Apond un [[{{int:newusermessage-template}}|mèssâjo de benvegnua]] dens la pâge de discussion a un novél utilisator',
+	'newusermessage-desc' => 'Apond un mèssâjo dedens la pâge de discussion a un novél usanciér.',
+	'newuseredit-summary' => 'Apond un [[{{int:newusermessage-template}}|mèssâjo de benvegnua]] dedens la pâge de discussion a un novél usanciér',
 );
 
 /** Friulian (Furlan)
