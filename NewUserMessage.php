@@ -32,5 +32,5 @@ $wgExtensionCredits['other'][] = array(
 	'version'        => NEWUSERMESSAGE_VERSION,
 	'author'         => array( "[http://www.organicdesign.co.nz/User:Nad Nad]", 'Siebrand Mazeland' ),
 	'descriptionmsg' => 'newusermessage-desc',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:NewUserMessage',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:NewUserMessage',
 );
