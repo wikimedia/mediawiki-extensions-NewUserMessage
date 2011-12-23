@@ -686,6 +686,12 @@ $messages['sr-ec'] = array(
 	'newuseredit-summary' => 'Додавање [[{{int:newusermessage-template}}|добродошлице]] на страницу за разговор новог корисника',
 );
 
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
+$messages['sr-el'] = array(
+	'newusermessage-desc' => 'Postavlja poruku na stranice za razgovor novih korisnika',
+	'newuseredit-summary' => 'Dodavanje [[{{int:newusermessage-template}}|dobrodošlice]] na stranicu za razgovor novog korisnika',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */
