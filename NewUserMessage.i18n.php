@@ -509,6 +509,14 @@ $messages['mt'] = array(
 	'newuseredit-summary' => "Iżżid [[{{int:newusermessage-template}}|messaġġ ta' merħba]] fil-paġna ta' diskussjoni ta' utent ġdid",
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nb'] = array(
+	'newusermessage-desc' => 'Legger inn en beskjed på nye brukeres diskusjonssider',
+	'newuseredit-summary' => 'Legger til en [[{{int:newusermessage-template}}|velkomstbeskjed]] til nye brukeres diskusjonssider',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
@@ -531,14 +539,6 @@ $messages['nl'] = array(
 $messages['nn'] = array(
 	'newusermessage-desc' => 'Legg inn meldingar på diskusjonssidene til nye brukarar',
 	'newuseredit-summary' => 'La til ei [[{{int:newusermessage-template}}|velkomstmelding]] på diskusjonssida til ein ny brukar',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- */
-$messages['nb'] = array(
-	'newusermessage-desc' => 'Legger inn en beskjed på nye brukeres diskusjonssider',
-	'newuseredit-summary' => 'Legger til en [[{{int:newusermessage-template}}|velkomstbeskjed]] til nye brukeres diskusjonssider',
 );
 
 /** Occitan (Occitan)
