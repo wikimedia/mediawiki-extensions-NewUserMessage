@@ -365,6 +365,14 @@ $messages['id'] = array(
 	'newuseredit-summary' => 'Menambahkan [[{{int:newusermessage-template}}|pesan selamat datang]] ke halaman pembicaraan seorang pengguna baru',
 );
 
+/** Iloko (Ilokano)
+ * @author Lam-ang
+ */
+$messages['ilo'] = array(
+	'newusermessage-desc' => 'Agnayon kadagiti mensahe iti kabarbaro a naaramid  a pangtungtungan a pampanid ti agar-aramat',
+	'newuseredit-summary' => 'Agnay-nayon [[{{int:newusermessage-template}}|kablaaw a mensahe]] iti baro a pagtungtungan a panid ti agar-aramat',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */
