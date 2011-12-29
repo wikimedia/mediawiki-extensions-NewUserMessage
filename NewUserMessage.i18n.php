@@ -726,6 +726,14 @@ $messages['sv'] = array(
 	'newuseredit-summary' => 'Lägger till ett [[{{int:newusermessage-template}}|välkomstmeddelande]] till nya användares diskussionssidor',
 );
 
+/** Tamil (தமிழ்)
+ * @author Shanmugamp7
+ */
+$messages['ta'] = array(
+	'newusermessage-desc' => 'புதியதாக உருவாக்கப்பட்ட பயனரின் உரையாடல்பக்கத்தில் ஒரு தகவலை சேர்க்கிறது.',
+	'newuseredit-summary' => 'புதிய பயனரின் உரையாடல் பக்கத்திற்கு [[{{int:newusermessage-template}}|வரவேற்பு செய்தி]] ஐ சேர்க்கிறது',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */
