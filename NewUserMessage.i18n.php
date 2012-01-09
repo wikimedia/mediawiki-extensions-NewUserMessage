@@ -41,6 +41,14 @@ $messages['af'] = array(
 	'newuseredit-summary' => 'Plaas [[{{int:newusermessage-template}}|welkomboodskap]] op nuwe gebruiker se besprekingsblad',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'newusermessage-desc' => "Adhibe un mensache a la pachina de discusión d'un usuario creyau fa poco",
+	'newuseredit-summary' => "Adhibindo o \\[[{{int:newusermessage-template}}|mensache de bienplegada]] a la pachina d'usuario d'o nuevo usuario",
+);
+
 /** Old English (Ænglisc)
  * @author Wōdenhelm
  */
