@@ -182,8 +182,8 @@ $messages['da'] = array(
  * @author Raimond Spekking
  */
 $messages['de'] = array(
-	'newusermessage-desc' => 'Fügt der Benutzerdiskussionsseite neu angemeldeter Benutzer eine Nachricht hinzu',
-	'newuseredit-summary' => 'Begrüßt einen neuen Benutzer auf seiner Diskussionsseite mit einer [[{{int:newusermessage-template}}|Willkommensnachricht]]',
+	'newusermessage-desc' => 'Ermöglicht das Hinzufügen von Willkommensnachrichten auf die Benutzerdiskussionsseite neu angemeldeter Benutzer',
+	'newuseredit-summary' => 'Begrüßung eines neuen Benutzers mit einer [[{{int:newusermessage-template}}|Willkommensnachricht]] auf dessen Diskussionsseite',
 );
 
 /** Swiss High German (Schweizer Hochdeutsch)
