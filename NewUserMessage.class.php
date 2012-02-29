@@ -227,7 +227,7 @@ class NewUserMessage {
 		}
 
 		$dbw = wfGetDB( DB_MASTER );
-		$dbw->begin();
+		$dbw->begin( __METHOD__ );
 
 		try {
 			$status = $article->doEdit( $text, $summary, $flags, false, $editor );
@@ -242,7 +242,7 @@ class NewUserMessage {
 		} else {
 			// The article was concurrently created
 			wfDebug( __METHOD__ . ": Error ".$status->getWikiText() );
-			$dbw->rollback();
+			$dbw->rollback( __METHOD__ );
 		}
 
 		return $status->isGood();
