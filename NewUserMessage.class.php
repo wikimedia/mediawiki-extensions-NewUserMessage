@@ -153,6 +153,7 @@ class NewUserMessage {
 	static function createNewUserMessage( $user ) {
 		$talk = $user->getTalkPage();
 
+		// Only leave message if user doesn't have a talk page yet
 		if ( !$talk->exists() ) {
 			$article = new Article( $talk );
 			$subject = self::fetchSubject();
@@ -223,7 +224,7 @@ class NewUserMessage {
 		$flags = $article->checkFlags( $flags );
 
 		if ( $flags & EDIT_UPDATE ) {
-			$text = $article->getRawText() . $text;
+			$text = $article->getRawText() . "\n" . $text;
 		}
 
 		$dbw = wfGetDB( DB_MASTER );
@@ -255,13 +256,13 @@ class NewUserMessage {
 	 * @param $signature String the signature, if provided.
 	 */
 	static protected function formatUserMessage( $subject, $text, $signature ) {
-		$contents = "\n";
+		$contents = "";
 		$signature = empty( $signature ) ? "~~~~" : "{$signature} ~~~~~";
 		
 		if ( $subject ) {
-			$contents .= "== $subject ==\n";
+			$contents .= "== $subject ==\n\n";
 		}
-		$contents .= "\n$text\n\n-- $signature\n";
+		$contents .= "$text\n\n-- $signature\n";
 
 		return $contents;
 	}
