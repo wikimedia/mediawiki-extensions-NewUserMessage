@@ -425,6 +425,14 @@ $messages['km'] = array(
 	'newuseredit-summary' => 'បញ្ចូល[[{{int:newusermessage-template}}|សារស្វាគមន៍]]ទៅក្នុងទំព័រពិភាក្សារបស់អ្នកប្រើប្រាស់',
 );
 
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'newusermessage-desc' => 'ಹೊಸದಾಗಿ ಸೃಷ್ಟಿಸಿದ ಸದಸ್ಯರ ಚರ್ಚಾ ಪುಟದಲ್ಲಿ ಸಂದೇಶವನ್ನು ಸೇರಿಸುತ್ತದೆ',
+	'newuseredit-summary' => 'ಹೊಸ ಸದಸ್ಯರ ಚರ್ಚಾಪುಟದಲ್ಲಿ [[{{int:newusermessage-template}}|ಸ್ವಾಗತ ಸಂದೇಶವನ್ನು]] ಸೇರಿಸಲಾಗುತ್ತಿದೆ',
+);
+
 /** Korean (한국어)
  * @author Kwj2772
  */
