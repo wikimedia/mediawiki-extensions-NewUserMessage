@@ -483,6 +483,14 @@ $messages['lt'] = array(
 	'newuseredit-summary' => 'Prideda [[{{int:newusermessage-template}}|pasveikinimo pranešimą]] į naujo naudotojo aptarimo puslapį',
 );
 
+/** Lushai (Mizo ţawng)
+ * @author RMizo
+ */
+$messages['lus'] = array(
+	'newusermessage-desc' => 'Hmangtu sawihona phêk siam tharah thuthawn thar a thawn.',
+	'newuseredit-summary' => 'Hmngtu thar sawihona phêka [[{{int:newusermessage-template}}|lawmna thuthawn]]  thawn',
+);
+
 /** Latvian (Latviešu)
  * @author Xil
  */
