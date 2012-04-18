@@ -488,7 +488,7 @@ $messages['lt'] = array(
  */
 $messages['lus'] = array(
 	'newusermessage-desc' => 'Hmangtu sawihona phêk siam tharah thuthawn thar a thawn.',
-	'newuseredit-summary' => 'Hmngtu thar sawihona phêka [[{{int:newusermessage-template}}|lawmna thuthawn]]  thawn',
+	'newuseredit-summary' => 'Hmangtu thar sawihona phêka [[{{int:newusermessage-template}}|lawmna thuthawn]]  thawn',
 );
 
 /** Latvian (Latviešu)
