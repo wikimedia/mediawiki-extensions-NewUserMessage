@@ -567,6 +567,7 @@ $messages['nl'] = array(
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Harald Khan
+ * @author Njardarlogar
  */
 $messages['nn'] = array(
 	'newusermessage-desc' => 'Legg inn meldingar på diskusjonssidene til nye brukarar',
