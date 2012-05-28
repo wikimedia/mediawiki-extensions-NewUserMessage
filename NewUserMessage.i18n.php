@@ -309,10 +309,11 @@ $messages['gsw'] = array(
 
 /** Gujarati (ગુજરાતી)
  * @author Ashok modhvadia
+ * @author Dsvyas
  */
 $messages['gu'] = array(
 	'newusermessage-desc' => 'નવા સભ્યનાં ચર્ચાનાં પાનાઓ પર સંદેશ ઉમેરો',
-	'newuseredit-summary' => 'નવા સભ્યનાં ચર્ચાનાં પાના પર [[{{int:newusermessage-template}}|સ્વાગત સંદેશ]] ઉમેરો',
+	'newuseredit-summary' => 'નવા સભ્યનાં ચર્ચાનાં પાના પર [[{{int:newusermessage-template}}|સ્વાગત સંદેશ]]નો ઉમેરો',
 );
 
 /** Hebrew (עברית)
