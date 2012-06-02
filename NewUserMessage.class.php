@@ -226,26 +226,7 @@ class NewUserMessage {
 		if ( $flags & EDIT_UPDATE ) {
 			$text = $article->getRawText() . "\n" . $text;
 		}
-
-		$dbw = wfGetDB( DB_MASTER );
-		$dbw->begin( __METHOD__ );
-
-		try {
-			$status = $article->doEdit( $text, $summary, $flags, false, $editor );
-		} catch ( DBQueryError $e ) {
-			$status = Status::newFatal( 'DB Error' );
-		}
-
-		if ( $status->isGood() ) {
-			// Set newtalk with the right user ID
-			$user->setNewtalk( true );
-			$dbw->commit();
-		} else {
-			// The article was concurrently created
-			wfDebug( __METHOD__ . ": Error ".$status->getWikiText() );
-			$dbw->rollback( __METHOD__ );
-		}
-
+		$status = $article->doEdit( $text, $summary, $flags, false, $editor );
 		return $status->isGood();
 	}
 	
