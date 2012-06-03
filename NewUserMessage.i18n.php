@@ -75,6 +75,13 @@ $messages['arz'] = array(
 	'newuseredit-summary' => 'إضافة [[{{int:newusermessage-template}}|رسالة ترحيب]] لصفحة نقاش يوزر جديد',
 );
 
+/** Assamese (অসমীয়া)
+ * @author Bishnu Saikia
+ */
+$messages['as'] = array(
+	'newuseredit-summary' => 'নতুন সদস্যৰ বাৰ্তা পৃষ্ঠাত [[{{int:newusermessage-template}}|আদৰণি বাৰ্তা]] যোগ',
+);
+
 /** Asturian (Asturianu)
  * @author Esbardu
  */
