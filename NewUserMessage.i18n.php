@@ -79,6 +79,7 @@ $messages['arz'] = array(
  * @author Bishnu Saikia
  */
 $messages['as'] = array(
+	'newusermessage-desc' => 'ন-সদস্যসকলৰ বাৰ্তা পৃষ্ঠাত এটা বাৰ্তা যোগ দিয়ে',
 	'newuseredit-summary' => 'নতুন সদস্যৰ বাৰ্তা পৃষ্ঠাত [[{{int:newusermessage-template}}|আদৰণি বাৰ্তা]] যোগ',
 );
 
