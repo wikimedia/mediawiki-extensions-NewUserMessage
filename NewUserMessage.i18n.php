@@ -41,7 +41,7 @@ $messages['af'] = array(
 	'newuseredit-summary' => 'Plaas [[{{int:newusermessage-template}}|welkomboodskap]] op nuwe gebruiker se besprekingsblad',
 );
 
-/** Aragonese (Aragonés)
+/** Aragonese (aragonés)
  * @author Juanpabl
  */
 $messages['an'] = array(
@@ -108,7 +108,7 @@ $messages['bar'] = array(
 	'newuseredit-summary' => 'Begriasst an neichen Benutzer auf seiner Dischkrierseiten mid ner [[{{int:newusermessage-template}}|Begriassungsbóutschoft]]',
 );
 
-/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
+/** Belarusian (Taraškievica orthography) (‪беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  * @author Red Winged Duck
@@ -209,7 +209,7 @@ $messages['diq'] = array(
 	'newuseredit-summary' => 'pelê werêameyişê karberi yo newe re mesajê [[{{int:newusermessage-template}}|ti xêr ameyi]] erzeno',
 );
 
-/** Lower Sorbian (Dolnoserbski)
+/** Lower Sorbian (dolnoserbski)
  * @author Michawiki
  */
 $messages['dsb'] = array(
@@ -299,7 +299,7 @@ $messages['fur'] = array(
 	'newuseredit-summary' => 'O zonti [[{{int:newusermessage-template}}|un messaç di benvignût]] ae pagjine di discussion di un gnûf utent',
 );
 
-/** Galician (Galego)
+/** Galician (galego)
  * @author Toliño
  */
 $messages['gl'] = array(
@@ -350,7 +350,7 @@ $messages['hr'] = array(
 	'newuseredit-summary' => 'Dodajem [[{{int:newusermessage-template}}|dobrodošlicu]] na stranicu za razgovor novog suradnika',
 );
 
-/** Upper Sorbian (Hornjoserbsce)
+/** Upper Sorbian (hornjoserbsce)
  * @author Michawiki
  */
 $messages['hsb'] = array(
@@ -672,7 +672,7 @@ $messages['ru'] = array(
 	'newuseredit-summary' => 'Добавление [[{{int:newusermessage-template}}|приветствия]] на страницу обсуждения нового участника',
 );
 
-/** Rusyn (Русиньскый)
+/** Rusyn (русиньскый)
  * @author Gazeb
  */
 $messages['rue'] = array(
