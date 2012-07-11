@@ -91,7 +91,7 @@ $messages['ast'] = array(
 	'newuseredit-summary' => "Añadiendo [[{{int:newusermessage-template}}|mensaxe de bienvenida]] a la nueva páxina d'alderique d'usuariu",
 );
 
-/** Bashkir (Башҡортса)
+/** Bashkir (башҡортса)
  * @author Assele
  */
 $messages['ba'] = array(
@@ -152,7 +152,7 @@ $messages['ca'] = array(
 	'newuseredit-summary' => "Afegint [[{{int:newusermessage-template}}|missatge de benvinguda]] a la pàgina de discussió de l'usuari",
 );
 
-/** Chechen (Нохчийн)
+/** Chechen (нохчийн)
  * @author Sasan700
  */
 $messages['ce'] = array(
@@ -550,9 +550,7 @@ $messages['mt'] = array(
 	'newuseredit-summary' => "Iżżid [[{{int:newusermessage-template}}|messaġġ ta' merħba]] fil-paġna ta' diskussjoni ta' utent ġdid",
 );
 
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- */
+/** Norwegian Bokmål (‪norsk (bokmål)‬) */
 $messages['nb'] = array(
 	'newusermessage-desc' => 'Legger inn en beskjed på nye brukeres diskusjonssider',
 	'newuseredit-summary' => 'Legger til en [[{{int:newusermessage-template}}|velkomstbeskjed]] til nye brukeres diskusjonssider',
