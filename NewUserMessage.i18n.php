@@ -678,6 +678,13 @@ $messages['rue'] = array(
 	'newuseredit-summary' => 'Приданя [[{{int:newusermessage-template}}|привітаня]] на діскузну сторінку нового хоснователя',
 );
 
+/** Sanskrit (संस्कृतम्)
+ * @author Shubha
+ */
+$messages['sa'] = array(
+	'newusermessage-desc' => 'नूतनतया सृष्टे योजकसम्भाषणपृष्ठे सन्देशं लगयति',
+);
+
 /** Sakha (саха тыла)
  * @author HalanTul
  */
