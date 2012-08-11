@@ -684,6 +684,7 @@ $messages['rue'] = array(
  */
 $messages['sa'] = array(
 	'newusermessage-desc' => 'नूतनतया सृष्टे योजकसम्भाषणपृष्ठे सन्देशं लगयति',
+	'newuseredit-summary' => 'नूतनयोजकस्य पृष्ठे [[{{int:newusermessage-template}}|स्वागतसन्देशः]] इत्यस्य योजनम्',
 );
 
 /** Sakha (саха тыла)
