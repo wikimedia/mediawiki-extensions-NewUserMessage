@@ -336,9 +336,10 @@ $messages['he'] = array(
 /** Hindi (हिन्दी)
  * @author Kaustubh
  * @author Mayur
+ * @author Siddhartha Ghai
  */
 $messages['hi'] = array(
-	'newusermessage-desc' => 'नये सदस्योंके वार्ता पृष्ठपर एक संदेश देता हैं',
+	'newusermessage-desc' => 'नये सदस्यों के वार्ता पृष्ठ पर एक संदेश देता है',
 	'newuseredit-summary' => '[[{{int:newusermessage-template}}|स्वागतम्]]',
 );
 
