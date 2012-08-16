@@ -823,6 +823,13 @@ $messages['uk'] = array(
 	'newuseredit-summary' => 'Додавання [[{{int:newusermessage-template}}|привітання]] на сторінку обговорення нового користувача',
 );
 
+/** Urdu (اردو)
+ * @author පසිඳු කාවින්ද
+ */
+$messages['ur'] = array(
+	'newusermessage-desc' => 'نو پیدا صارف کے بات صفحات کے لئے ایک پیغام کو کہتے ہیں',
+);
+
 /** vèneto (vèneto)
  * @author Candalua
  */
