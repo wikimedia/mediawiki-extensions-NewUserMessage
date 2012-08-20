@@ -22,9 +22,11 @@ class NewUserMessage {
 	static function fetchEditor() {
 		// Create a user object for the editing user and add it to the
 		// database if it is not there already
-		$editor = User::newFromName( wfMsgForContent( 'newusermessage-editor' ) );
+		$editor = User::newFromName(
+			wfMessage( 'newusermessage-editor' )->inContentLanguage()->text()
+		);
 
-		if( !$editor ) {
+		if ( !$editor ) {
 			return false; # Invalid user name
 		}
 
@@ -40,10 +42,10 @@ class NewUserMessage {
 	 * @return String
 	 */
 	static function fetchSignature() {
-		$signatures = wfMsgForContent( 'newusermessage-signatures' );
+		$signatures = wfMessage( 'newusermessage-signatures' )->inContentLanguage()->text();
 		$signature = '';
 
-		if ( !wfEmptyMsg( 'newusermessage-signatures', $signatures ) ) {
+		if ( wfMessage( 'newusermessage-signatures' )->isDisabled() ) {
 			$pattern = '/^\* ?(.*?)$/m';
 			$signatureList = array();
 			preg_match_all( $pattern, $signatures, $signatureList, PREG_SET_ORDER );
@@ -58,6 +60,7 @@ class NewUserMessage {
 
 	/**
 	 * Return the template name if it exists, or '' otherwise.
+	 * @param $template string with page name of user message template
 	 * @return string
 	 */
 	static function fetchTemplateIfExists( $template ) {
@@ -81,7 +84,7 @@ class NewUserMessage {
 	 * @return String
 	 */
 	static function fetchSubject() {
-		return self::fetchTemplateIfExists( wfMsg( 'newusermessage-template-subject' ) );
+		return self::fetchTemplateIfExists( wfMessage( 'newusermessage-template-subject' )->text() );
 	}
 
 	/**
@@ -89,15 +92,15 @@ class NewUserMessage {
 	 * @return String
 	 */
 	static function fetchText() {
-		$template = wfMsg( 'newusermessage-template-body' );
-		
+		$template = wfMessage( 'newusermessage-template-body' )->text();
+
 		$title = Title::newFromText( $template );
 		if ( $title && $title->exists() && $title->getLength() ) {
 			return $template;
 		}
-		
+
 		// Fall back if necessary to the old template
-		return wfMsg( 'newusermessage-template' );
+		return wfMessage( 'newusermessage-template' )->text();
 	}
 
 	/**
@@ -116,12 +119,12 @@ class NewUserMessage {
 
 	/**
 	 * Take care of substition on the string in a uniform manner
-	 * @param $str String
+	 * @param $str string
 	 * @param $user User
 	 * @param $editor User
 	 * @param $talk Article
-	 * @param $preparse if provided, then preparse the string using a Parser
-	 * @return String
+	 * @param $preparse bool If provided, then preparse the string using a Parser
+	 * @return string
 	 */
 	static private function substString( $str, $user, $editor, $talk, $preparse = null ) {
 		$realName = $user->getRealName();
@@ -129,7 +132,7 @@ class NewUserMessage {
 
 		// Add (any) content to [[MediaWiki:Newusermessage-substitute]] to substitute the
 		// welcome template.
-		$substitute = wfMsgForContent( 'newusermessage-substitute' );
+		$substitute = wfMessage( 'newusermessage-substitute' )->inContentLanguage()->text();
 
 		if ( $substitute ) {
 			$str = '{{subst:' . "$str|realName=$realName|name=$name}}";
@@ -140,7 +143,7 @@ class NewUserMessage {
 		if ( $preparse ) {
 			global $wgParser;
 
-			$str = $wgParser->preSaveTransform($str, $talk, $editor, new ParserOptions );
+			$str = $wgParser->preSaveTransform( $str, $talk, $editor, new ParserOptions );
 		}
 
 		return $str;
@@ -149,6 +152,7 @@ class NewUserMessage {
 	/**
 	 * Add the message if the users talk page does not already exist
 	 * @param $user User object
+	 * @return bool
 	 */
 	static function createNewUserMessage( $user ) {
 		$talk = $user->getTalkPage();
@@ -159,12 +163,12 @@ class NewUserMessage {
 			$subject = self::fetchSubject();
 			$text = self::fetchText();
 			$signature = self::fetchSignature();
-			$editSummary = wfMsgForContent( 'newuseredit-summary' );
+			$editSummary = wfMessage( 'newuseredit-summary' )->inContentLanguage()->text();
 			$editor = self::fetchEditor();
 			$flags = self::fetchFlags();
 
 			# Do not add a message if the username is invalid or if the account that adds it, is blocked
-			if( !$editor || $editor->isBlocked() ) {
+			if ( !$editor || $editor->isBlocked() ) {
 				return true;
 			}
 
@@ -175,7 +179,7 @@ class NewUserMessage {
 				$text = self::substString( $text, $user, $editor, $talk );
 			}
 
-			self::leaveUserMessage( $user, $article, $subject, $text, 
+			self::leaveUserMessage( $user, $article, $subject, $text,
 				$signature, $editSummary, $editor, $flags );
 		}
 		return true;
@@ -199,22 +203,25 @@ class NewUserMessage {
 	/**
 	 * Hook function to provide a reserved name
 	 * @param $names Array
+	 * @return bool
 	 */
 	static function onUserGetReservedNames( &$names ) {
 		$names[] = 'msg:newusermessage-editor';
 		return true;
 	}
-	
+
 	/**
 	 * Leave a user a message
-	 * @param $subject String the subject of the message
-	 * @param $text String the message to leave
-	 * @param $signature String Text to leave in the signature
-	 * @param $summary String the summary for this change, defaults to
+	 * @param $user User to message
+	 * @param $article Article
+	 * @param $subject string with the subject of the message
+	 * @param $text string with the message to leave
+	 * @param $signature string to leave in the signature
+	 * @param $summary string with the summary for this change, defaults to
 	 *                        "Leave system message."
-	 * @param $editor User The user leaving the message, defaults to
+	 * @param $editor User leaving the message, defaults to
 	 *                        "{{MediaWiki:usermessage-editor}}"
-	 * @param $flags Int default edit flags
+	 * @param $flags int default edit flags
 	 *
 	 * @return boolean true if it was successful
 	 */
@@ -229,17 +236,18 @@ class NewUserMessage {
 		$status = $article->doEdit( $text, $summary, $flags, false, $editor );
 		return $status->isGood();
 	}
-	
+
 	/**
 	 * Format the user message using a hook, a template, or, failing these, a static format.
-	 * @param $subject   String the subject of the message
-	 * @param $text      String the content of the message
-	 * @param $signature String the signature, if provided.
+	 * @param $subject   string the subject of the message
+	 * @param $text      string the content of the message
+	 * @param $signature string the signature, if provided.
+	 * @return string in wiki text with complete user message
 	 */
 	static protected function formatUserMessage( $subject, $text, $signature ) {
 		$contents = "";
 		$signature = empty( $signature ) ? "~~~~" : "{$signature} ~~~~~";
-		
+
 		if ( $subject ) {
 			$contents .= "== $subject ==\n\n";
 		}
