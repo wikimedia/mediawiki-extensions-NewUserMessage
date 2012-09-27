@@ -9,16 +9,17 @@
  * @copyright 2007-10-15 [http://www.organicdesign.co.nz/nad User:Nad]
  */
 
-if ( !defined( 'MEDIAWIKI' ) )
+if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
+}
 
-define( 'NEWUSERMESSAGE_VERSION', '3.3, 2012-08-20' );
+define( 'NEWUSERMESSAGE_VERSION', '3.4, 2012-09-26' );
 
 $wgNewUserSuppressRC = false;           // Specify whether or not the new user message creation should show up in recent changes
 $wgNewUserMinorEdit = true;             // Should the new user message creation be a minor edit?
 $wgNewUserMessageOnAutoCreate = false;  // Should auto creation (CentralAuth) trigger a new user message?
 
-$dir = dirname( __FILE__ ) . '/';
+$dir = __DIR__ . '/';
 $wgExtensionMessagesFiles['NewUserMessage'] = $dir . 'NewUserMessage.i18n.php';
 $wgAutoloadClasses['NewUserMessage'] = $dir . 'NewUserMessage.class.php';
 

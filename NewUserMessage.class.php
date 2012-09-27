@@ -10,11 +10,7 @@
  * @copyright 2009 Siebrand Mazeland
  */
 
-if ( !defined( 'MEDIAWIKI' ) )
-	die( 'Not an entry point.' );
-
 class NewUserMessage {
-
 	/**
 	 * Produce the editor for new user messages.
 	 * @return User
@@ -122,7 +118,7 @@ class NewUserMessage {
 	 * @param $str string
 	 * @param $user User
 	 * @param $editor User
-	 * @param $talk Article
+	 * @param $talk Title
 	 * @param $preparse bool If provided, then preparse the string using a Parser
 	 * @return string
 	 */
@@ -132,12 +128,12 @@ class NewUserMessage {
 
 		// Add (any) content to [[MediaWiki:Newusermessage-substitute]] to substitute the
 		// welcome template.
-		$substitute = wfMessage( 'newusermessage-substitute' )->inContentLanguage()->text();
+		$substDisabled = wfMessage( 'newusermessage-substitute' )->inContentLanguage()->isDisabled();
 
-		if ( $substitute ) {
-			$str = '{{subst:' . "$str|realName=$realName|name=$name}}";
-		} else {
+		if ( $substDisabled ) {
 			$str = '{{' . "$str|realName=$realName|name=$name}}";
+		} else {
+			$str = '{{subst:' . "$str|realName=$realName|name=$name}}";
 		}
 
 		if ( $preparse ) {
@@ -159,7 +155,7 @@ class NewUserMessage {
 
 		// Only leave message if user doesn't have a talk page yet
 		if ( !$talk->exists() ) {
-			$article = new Article( $talk );
+			$wikiPage = WikiPage::factory( $talk );
 			$subject = self::fetchSubject();
 			$text = self::fetchText();
 			$signature = self::fetchSignature();
@@ -179,7 +175,7 @@ class NewUserMessage {
 				$text = self::substString( $text, $user, $editor, $talk );
 			}
 
-			self::leaveUserMessage( $user, $article, $subject, $text,
+			self::leaveUserMessage( $user, $wikiPage, $subject, $text,
 				$signature, $editSummary, $editor, $flags );
 		}
 		return true;
@@ -213,7 +209,7 @@ class NewUserMessage {
 	/**
 	 * Leave a user a message
 	 * @param $user User to message
-	 * @param $article Article
+	 * @param $wikiPage WikiPage user talk page
 	 * @param $subject string with the subject of the message
 	 * @param $text string with the message to leave
 	 * @param $signature string to leave in the signature
@@ -225,15 +221,15 @@ class NewUserMessage {
 	 *
 	 * @return boolean true if it was successful
 	 */
-	public static function leaveUserMessage( $user, $article, $subject, $text, $signature,
+	public static function leaveUserMessage( $user, $wikiPage, $subject, $text, $signature,
 			$summary, $editor, $flags ) {
 		$text = self::formatUserMessage( $subject, $text, $signature );
-		$flags = $article->checkFlags( $flags );
+		$flags = $wikiPage->checkFlags( $flags );
 
 		if ( $flags & EDIT_UPDATE ) {
-			$text = $article->getRawText() . "\n" . $text;
+			$text = $wikiPage->getRawText() . "\n" . $text;
 		}
-		$status = $article->doEdit( $text, $summary, $flags, false, $editor );
+		$status = $wikiPage->doEdit( $text, $summary, $flags, false, $editor );
 		return $status->isGood();
 	}
 
