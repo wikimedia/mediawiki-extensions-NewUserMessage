@@ -108,7 +108,7 @@ $messages['bar'] = array(
 	'newuseredit-summary' => 'Begriasst an neichen Benutzer auf seiner Dischkrierseiten mid ner [[{{int:newusermessage-template}}|Begriassungsbóutschoft]]',
 );
 
-/** Belarusian (Taraškievica orthography) (‪беларуская (тарашкевіца)‬)
+/** Belarusian (Taraškievica orthography) (беларуская (тарашкевіца)‎)
  * @author EugeneZelenko
  * @author Jim-by
  * @author Red Winged Duck
@@ -551,7 +551,7 @@ $messages['mt'] = array(
 	'newuseredit-summary' => "Iżżid [[{{int:newusermessage-template}}|messaġġ ta' merħba]] fil-paġna ta' diskussjoni ta' utent ġdid",
 );
 
-/** Norwegian Bokmål (‪norsk (bokmål)‬) */
+/** Norwegian Bokmål (norsk (bokmål)‎) */
 $messages['nb'] = array(
 	'newusermessage-desc' => 'Legger inn en beskjed på nye brukeres diskusjonssider',
 	'newuseredit-summary' => 'Legger til en [[{{int:newusermessage-template}}|velkomstbeskjed]] til nye brukeres diskusjonssider',
@@ -573,7 +573,7 @@ $messages['nl'] = array(
 	'newuseredit-summary' => '[[{{int:newusermessage-template}}|Welkomstbericht]] toegevoegd aan de overlegpagina van de nieuwe gebruiker',
 );
 
-/** Norwegian Nynorsk (‪norsk (nynorsk)‬)
+/** Norwegian Nynorsk (norsk (nynorsk)‎)
  * @author Harald Khan
  * @author Njardarlogar
  */
@@ -727,7 +727,7 @@ $messages['sq'] = array(
 	'newuseredit-summary' => 'Duke shtuar [[{{int:newusermessage-template}}|mesazhin mirëseardhës]] tek faqja e diskutimit e përdoruesit të ri',
 );
 
-/** Serbian (Cyrillic script) (‪српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (српски (ћирилица)‎)
  * @author Rancher
  */
 $messages['sr-ec'] = array(
@@ -735,7 +735,7 @@ $messages['sr-ec'] = array(
 	'newuseredit-summary' => 'Додавање [[{{int:newusermessage-template}}|добродошлице]] на страницу за разговор новог корисника',
 );
 
-/** Serbian (Latin script) (‪srpski (latinica)‬) */
+/** Serbian (Latin script) (srpski (latinica)‎) */
 $messages['sr-el'] = array(
 	'newusermessage-desc' => 'Postavlja poruku na stranice za razgovor novih korisnika',
 	'newuseredit-summary' => 'Dodavanje [[{{int:newusermessage-template}}|dobrodošlice]] na stranicu za razgovor novog korisnika',
@@ -879,7 +879,7 @@ $messages['yue'] = array(
 	'newuseredit-summary' => '加[[{{int:newusermessage-template}}|歡迎訊息]]到新用戶討論版度',
 );
 
-/** Simplified Chinese (‪中文（简体）‬)
+/** Simplified Chinese (中文（简体）‎)
  * @author Gaoxuewei
  * @author Xiaomingyan
  */
@@ -888,7 +888,7 @@ $messages['zh-hans'] = array(
 	'newuseredit-summary' => '在新用户的讨论页上添加[[{{int:newusermessage-template}}|欢迎信息]]',
 );
 
-/** Traditional Chinese (‪中文（繁體）‬)
+/** Traditional Chinese (中文（繁體）‎)
  * @author Alexsh
  * @author Mark85296341
  */
