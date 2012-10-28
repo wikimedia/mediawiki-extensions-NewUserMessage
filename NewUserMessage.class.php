@@ -45,7 +45,7 @@ class NewUserMessage {
 		$signatures = wfMessage( 'newusermessage-signatures' )->inContentLanguage()->text();
 		$signature = '';
 
-		if ( wfMessage( 'newusermessage-signatures' )->isDisabled() ) {
+		if ( !wfMessage( 'newusermessage-signatures' )->isDisabled() ) {
 			$pattern = '/^\* ?(.*?)$/m';
 			$signatureList = array();
 			preg_match_all( $pattern, $signatures, $signatureList, PREG_SET_ORDER );
