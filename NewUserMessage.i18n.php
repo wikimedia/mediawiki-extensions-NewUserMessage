@@ -70,7 +70,6 @@ $messages['ang'] = array(
 $messages['ar'] = array(
 	'newusermessage-desc' => 'يضيف رسالة إلى صفحات نقاش المستخدمين الجدد',
 	'newuseredit-summary' => 'إضافة [[{{int:newusermessage-template}}|رسالة ترحيب]] إلى صفحة نقاش مستخدم جديد',
-	'newusermessage-editor' => 'رسالة المستخدمين الجدد',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -216,7 +215,6 @@ $messages['de-ch'] = array(
 $messages['diq'] = array(
 	'newusermessage-desc' => 'karbero ke pelê werêameyişê ey newe vıraziyayo cı re yew mesaj erzeno',
 	'newuseredit-summary' => 'pelê werêameyişê karberi yo newe re mesajê [[{{int:newusermessage-template}}|ti xêr ameyi]] erzeno',
-	'newusermessage-editor' => 'Mesacê karberê newey',
 );
 
 /** Lower Sorbian (dolnoserbski)
@@ -292,10 +290,6 @@ $messages['fi'] = array(
 $messages['fr'] = array(
 	'newusermessage-desc' => 'Ajoute un message dans la page de discussion d’un nouvel utilisateur',
 	'newuseredit-summary' => 'Ajoute [[{{int:newusermessage-template}}|un message de bienvenue]] dans la page de discussion d’un nouvel utilisateur',
-	'newusermessage-template' => 'Modèle:Bienvenue',
-	'newusermessage-template-subject' => 'Modèle:Bienvenue-sujet',
-	'newusermessage-template-body' => 'Modèle:Bienvenue-corps',
-	'newusermessage-editor' => 'Nouveau message utilisateur',
 );
 
 /** Franco-Provençal (arpetan)
@@ -364,7 +358,6 @@ $messages['hi'] = array(
 $messages['hr'] = array(
 	'newusermessage-desc' => 'Dodaje poruku na stranicu za razgovor novih suradnika',
 	'newuseredit-summary' => 'Dodajem [[{{int:newusermessage-template}}|dobrodošlicu]] na stranicu za razgovor novog suradnika',
-	'newusermessage-editor' => 'Bot za dobrodošlice',
 );
 
 /** Upper Sorbian (hornjoserbsce)
@@ -389,7 +382,6 @@ $messages['hu'] = array(
 $messages['ia'] = array(
 	'newusermessage-desc' => 'Adde un message al paginas de discussion de nove usatores',
 	'newuseredit-summary' => 'Addition de un [[{{int:newusermessage-template}}|message de benvenita]] al pagina de discussion del nove usator',
-	'newusermessage-editor' => 'Message de nove usator',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -474,7 +466,6 @@ $messages['ko'] = array(
 $messages['ksh'] = array(
 	'newusermessage-desc' => 'Määt ene Beidraach op jedem neu aanjelaate Metmaacher sing Klaaf-Sigg.',
 	'newuseredit-summary' => 'Donn de neu Metmaachere_ene [[{{int:newusermessage-template}}|Bejröhßungstex]] op ier Klaaf-Sigg.',
-	'newusermessage-editor' => 'Bejrößungstex',
 );
 
 /** Ladino (Ladino)
@@ -511,7 +502,7 @@ $messages['lt'] = array(
 	'newuseredit-summary' => 'Prideda [[{{int:newusermessage-template}}|pasveikinimo pranešimą]] į naujo naudotojo aptarimo puslapį',
 );
 
-/** Lushai (Mizo ţawng)
+/** Mizo (Mizo ţawng)
  * @author RMizo
  */
 $messages['lus'] = array(
@@ -533,10 +524,6 @@ $messages['lv'] = array(
 $messages['mk'] = array(
 	'newusermessage-desc' => 'Поставува порака на страниците за разговор на новосоздадени корисници',
 	'newuseredit-summary' => 'Додавање на [[{{int:newusermessage-template}}|добредојде]] на страницата за разговор на нов корисник',
-	'newusermessage-template' => 'Шаблон:Добредојде',
-	'newusermessage-template-subject' => 'Добредојдовте!',
-	'newusermessage-template-body' => 'Шаблон:Добредојде',
-	'newusermessage-editor' => 'Добредојде за нови корисници',
 );
 
 /** Malayalam (മലയാളം)
@@ -586,7 +573,6 @@ $messages['nb'] = array(
 $messages['nds'] = array(
 	'newusermessage-desc' => 'Föögt en Naricht op de Diskuschoonssiet vun nee opstellte Brukers to',
 	'newuseredit-summary' => 'Tofögen vun en [[{{int:newusermessage-template}}|Willkamensnaricht]] op de Diskuschoonssied vun en ne’en Bruker to',
-	'newusermessage-editor' => 'Ne’e-Bruker-Begröter',
 );
 
 /** Dutch (Nederlands)
@@ -612,7 +598,6 @@ $messages['nn'] = array(
 $messages['oc'] = array(
 	'newusermessage-desc' => "Apond un messatge dins la pagina de discussion d'un utilizaire novèl.",
 	'newuseredit-summary' => 'Apond [[{{int:newusermessage-template}}|un messatge de benvenguda]] dins la pagina de discussion d’un utilizaire novèl',
-	'newusermessage-editor' => "Messatge d'utilizaire novèl",
 );
 
 /** Oriya (ଓଡ଼ିଆ)
@@ -653,7 +638,6 @@ $messages['pnb'] = array(
 $messages['ps'] = array(
 	'newusermessage-desc' => 'د يوه نوي جوړ شوي کارن-نوم د خبرواترو مخونو کې يو پيغام ورګډوي',
 	'newuseredit-summary' => 'د يوه نوي کارن د خبرواترو مخ کې د [[{{int:newusermessage-template}}|ښه راغلاست پيغام]] ورګډوي',
-	'newusermessage-editor' => 'نوی کارن پيغام',
 );
 
 /** Portuguese (português)
@@ -679,9 +663,6 @@ $messages['pt-br'] = array(
 $messages['ro'] = array(
 	'newusermessage-desc' => 'Adaugă un mesaj în paginile de discuție ale utilizatorilor nou înregistrați',
 	'newuseredit-summary' => '[[{{int:newusermessage-template}}|Mesaj de bun venit]]',
-	'newusermessage-template' => 'Format:Bun venit',
-	'newusermessage-template-subject' => 'Bun venit!',
-	'newusermessage-template-body' => 'Format:Bun venit',
 );
 
 /** tarandíne (tarandíne)
@@ -844,7 +825,6 @@ $messages['tl'] = array(
 $messages['tr'] = array(
 	'newusermessage-desc' => 'Yeni oluşturulmuş kullanıcının tartışma sayfasına bir mesaj ekler',
 	'newuseredit-summary' => 'Yeni kullanıcının tartışma sayfasına [[{{int:newusermessage-template}}|hoşgeldin mesajı]] ekleniyor',
-	'newusermessage-editor' => 'Yeni kullanıcı mesaj',
 );
 
 /** Ukrainian (українська)
