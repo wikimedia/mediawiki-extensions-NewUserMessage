@@ -96,6 +96,14 @@ $messages['ast'] = array(
 	'newuseredit-summary' => "Añadiendo [[{{int:newusermessage-template}}|mensaxe de bienvenida]] a la nueva páxina d'alderique d'usuariu",
 );
 
+/** South Azerbaijani (تورکجه)
+ * @author Mousa
+ */
+$messages['azb'] = array(
+	'newusermessage-desc' => 'یئنی یارانان ایستیفاده‌چیلرین دانیشیق صحیفه‌لرینه بیر مئساژ آرتیرار',
+	'newuseredit-summary' => 'یئنی ایستیفاده‌چینین دانیشیق صحیفه‌سینه [[{{int:newusermessage-template}}|خوش گلدینیز]] مئساژی آرتیریلیر',
+);
+
 /** Bashkir (башҡортса)
  * @author Assele
  */
