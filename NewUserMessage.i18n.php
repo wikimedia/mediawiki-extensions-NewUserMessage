@@ -581,6 +581,14 @@ $messages['nds'] = array(
 	'newuseredit-summary' => 'Tofögen vun en [[{{int:newusermessage-template}}|Willkamensnaricht]] op de Diskuschoonssied vun en ne’en Bruker to',
 );
 
+/** Newari (नेपाल भाषा)
+ * @author Eukesh
+ */
+$messages['new'] = array(
+	'newusermessage-desc' => 'न्हुम्ह छ्येलामिया खँल्हाबल्हा पतिइ छपु हसना तनाबि।',
+	'newuseredit-summary' => 'न्हुम्ह छ्येलामिया खँल्हाबल्हा पतिइ [[{{int:newusermessage-template}}|लसकुस हसना]] तनाच्वंगु।',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
