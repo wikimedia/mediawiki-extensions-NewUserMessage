@@ -23,16 +23,15 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author Bryan Tong Minh
  * @author Purodha
+ * @author Shirayuki
  * @author Siebrand
  * @author The Evil IP address
  * @author Umherirrender
  */
 $messages['qqq'] = array(
-	'newusermessage-desc' => '{{desc}}',
+	'newusermessage-desc' => '{{desc|name=New User Message|url=http://www.mediawiki.org/wiki/Extension:NewUserMessage}}',
 	'newuseredit-summary' => 'The edit summary used when placing a new user message.',
 	'newusermessage-template' => '{{notranslate}}',
-	'newusermessage-template-subject' => '{{notranslate}}',
-	'newusermessage-template-body' => '{{notranslate}}',
 	'newusermessage-editor' => '{{notranslate}}',
 	'newusermessage-substitute' => '{{notranslate}}',
 );
