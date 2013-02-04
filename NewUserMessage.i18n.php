@@ -22,6 +22,7 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Bryan Tong Minh
+ * @author Malafaya
  * @author Purodha
  * @author Shirayuki
  * @author Siebrand
@@ -32,7 +33,9 @@ $messages['qqq'] = array(
 	'newusermessage-desc' => '{{desc|name=New User Message|url=http://www.mediawiki.org/wiki/Extension:NewUserMessage}}',
 	'newuseredit-summary' => 'The edit summary used when placing a new user message.',
 	'newusermessage-template' => '{{notranslate}}',
-	'newusermessage-editor' => '{{notranslate}}',
+	'newusermessage-editor' => "{{notranslate}}
+
+Username for welcoming new users. This user won't be able to login like a regular user.",
 	'newusermessage-substitute' => '{{notranslate}}',
 );
 
