@@ -18,9 +18,7 @@ class NewUserMessage {
 	static function fetchEditor() {
 		// Create a user object for the editing user and add it to the
 		// database if it is not there already
-		$editor = User::newFromName(
-			wfMessage( 'newusermessage-editor' )->inContentLanguage()->text()
-		);
+		$editor = User::newFromName( self::getMsg( 'newusermessage-editor' )->text() );
 
 		if ( !$editor ) {
 			return false; # Invalid user name
@@ -38,10 +36,10 @@ class NewUserMessage {
 	 * @return String
 	 */
 	static function fetchSignature() {
-		$signatures = wfMessage( 'newusermessage-signatures' )->inContentLanguage()->text();
+		$signatures = self::getMsg( 'newusermessage-signatures' )->text();
 		$signature = '';
 
-		if ( !wfMessage( 'newusermessage-signatures' )->isDisabled() ) {
+		if ( !self::getMsg( 'newusermessage-signatures' )->isDisabled() ) {
 			$pattern = '/^\* ?(.*?)$/m';
 			$signatureList = array();
 			preg_match_all( $pattern, $signatures, $signatureList, PREG_SET_ORDER );
@@ -80,7 +78,7 @@ class NewUserMessage {
 	 * @return String
 	 */
 	static function fetchSubject() {
-		return self::fetchTemplateIfExists( wfMessage( 'newusermessage-template-subject' )->text() );
+		return self::fetchTemplateIfExists( self::getMsg( 'newusermessage-template-subject' )->text() );
 	}
 
 	/**
@@ -88,7 +86,7 @@ class NewUserMessage {
 	 * @return String
 	 */
 	static function fetchText() {
-		$template = wfMessage( 'newusermessage-template-body' )->text();
+		$template = self::getMsg( 'newusermessage-template-body' )->text();
 
 		$title = Title::newFromText( $template );
 		if ( $title && $title->exists() && $title->getLength() ) {
@@ -96,7 +94,7 @@ class NewUserMessage {
 		}
 
 		// Fall back if necessary to the old template
-		return wfMessage( 'newusermessage-template' )->text();
+		return self::getMsg( 'newusermessage-template' )->text();
 	}
 
 	/**
@@ -128,7 +126,7 @@ class NewUserMessage {
 
 		// Add (any) content to [[MediaWiki:Newusermessage-substitute]] to substitute the
 		// welcome template.
-		$substDisabled = wfMessage( 'newusermessage-substitute' )->inContentLanguage()->isDisabled();
+		$substDisabled = self::getMsg( 'newusermessage-substitute' )->isDisabled();
 
 		if ( $substDisabled ) {
 			$str = '{{' . "$str|realName=$realName|name=$name}}";
@@ -159,7 +157,7 @@ class NewUserMessage {
 			$subject = self::fetchSubject();
 			$text = self::fetchText();
 			$signature = self::fetchSignature();
-			$editSummary = wfMessage( 'newuseredit-summary' )->inContentLanguage()->text();
+			$editSummary = self::getMsg( 'newuseredit-summary' )->text();
 			$editor = self::fetchEditor();
 			$flags = self::fetchFlags();
 
@@ -250,5 +248,9 @@ class NewUserMessage {
 		$contents .= "$text\n\n-- $signature\n";
 
 		return $contents;
+	}
+
+	static protected function getMsg( $name ) {
+		return wfMessage( $name )->inContentLanguage();
 	}
 }
