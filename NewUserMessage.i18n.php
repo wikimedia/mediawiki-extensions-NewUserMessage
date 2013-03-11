@@ -526,6 +526,13 @@ $messages['lv'] = array(
 	'newuseredit-summary' => '[[{{int:newusermessage-template}}|Apsveic]] jaunu lietotāju',
 );
 
+/** Minangkabau (Baso Minangkabau)
+ * @author Iwan Novirion
+ */
+$messages['min'] = array(
+	'newusermessage-desc' => 'Manambahan pasan di laman rundiang pangguno baru',
+);
+
 /** Macedonian (македонски)
  * @author Bjankuloski06
  */
