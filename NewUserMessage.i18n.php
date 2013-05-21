@@ -308,6 +308,14 @@ $messages['frp'] = array(
 	'newuseredit-summary' => 'Apond un [[{{int:newusermessage-template}}|mèssâjo de benvegnua]] dedens la pâge de discussion a un novél usanciér',
 );
 
+/** Northern Frisian (Nordfriisk)
+ * @author Murma174
+ */
+$messages['frr'] = array(
+	'newusermessage-desc' => 'Skraft en nooracht tu nei brükern üüb hör diskusjuunssidj',
+	'newuseredit-summary' => 'Skraft en [[{{int:newusermessage-template}}|Welkimen]] üüb det diskusjuunssidj faan nei brükern',
+);
+
 /** Friulian (furlan)
  * @author Klenje
  */
