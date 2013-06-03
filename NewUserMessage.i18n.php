@@ -82,7 +82,7 @@ $messages['arz'] = array(
 	'newuseredit-summary' => 'إضافة [[{{int:newusermessage-template}}|رسالة ترحيب]] لصفحة نقاش يوزر جديد',
 );
 
-/** Assamese (অসমীয়া)
+/** Assamese (অসমীয়া)
  * @author Bishnu Saikia
  */
 $messages['as'] = array(
@@ -583,7 +583,7 @@ $messages['mt'] = array(
 	'newuseredit-summary' => "Iżżid [[{{int:newusermessage-template}}|messaġġ ta' merħba]] fil-paġna ta' diskussjoni ta' utent ġdid",
 );
 
-/** Norwegian Bokmål (norsk (bokmål)‎)
+/** Norwegian Bokmål (norsk bokmål)
  */
 $messages['nb'] = array(
 	'newusermessage-desc' => 'Legger inn en beskjed på nye brukeres diskusjonssider',
@@ -614,7 +614,7 @@ $messages['nl'] = array(
 	'newuseredit-summary' => '[[{{int:newusermessage-template}}|Welkomstbericht]] toegevoegd aan de overlegpagina van de nieuwe gebruiker',
 );
 
-/** Norwegian Nynorsk (norsk (nynorsk)‎)
+/** Norwegian Nynorsk (norsk nynorsk)
  * @author Harald Khan
  * @author Njardarlogar
  */
@@ -631,7 +631,7 @@ $messages['oc'] = array(
 	'newuseredit-summary' => 'Apond [[{{int:newusermessage-template}}|un messatge de benvenguda]] dins la pagina de discussion d’un utilizaire novèl',
 );
 
-/** Oriya (ଓଡ଼ିଆ)
+/** Oriya (ଓଡ଼ିଆ)
  * @author Psubhashish
  */
 $messages['or'] = array(
