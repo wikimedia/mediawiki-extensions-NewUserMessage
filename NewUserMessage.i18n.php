@@ -56,10 +56,11 @@ $messages['an'] = array(
 );
 
 /** Old English (Ænglisc)
+ * @author Gott wisst
  * @author Wōdenhelm
  */
 $messages['ang'] = array(
-	'newusermessage-desc' => 'Ēacaþ ȝeƿrit to þǣre ȝespreċsīdan þæs nīƿes brūcendes',
+	'newusermessage-desc' => 'Ēacnaþ nīwe gesceapenes brūcendes mōtunge mid gewrite',
 	'newuseredit-summary' => 'Ēacende [[{{int:newusermessage-template}}|ƿilcumenǣrende]] tō þǣre ȝespreċsīdan þæs nīƿes brūcendes',
 );
 
