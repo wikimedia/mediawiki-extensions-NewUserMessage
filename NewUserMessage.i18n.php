@@ -124,6 +124,14 @@ $messages['bar'] = array(
 	'newuseredit-summary' => 'Begriasst an neichen Benutzer auf seiner Dischkrierseiten mid ner [[{{int:newusermessage-template}}|Begriassungsbóutschoft]]',
 );
 
+/** Bikol Central (Bikol Central)
+ * @author Geopoet
+ */
+$messages['bcl'] = array(
+	'newusermessage-desc' => 'Minadugang nin sarong mensahe sa pinakabaguhong minukna na mga pahina nin orolayan kan paragamit',
+	'newuseredit-summary' => 'Nagdudugang [[{{int:newusermessage-template}}|mensahe kan maogmang pag-abot]] sa baguhong pahina nin orolayan kan paragamit',
+);
+
 /** Belarusian (Taraškievica orthography) (беларуская (тарашкевіца)‎)
  * @author EugeneZelenko
  * @author Jim-by
