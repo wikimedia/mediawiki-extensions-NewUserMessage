@@ -61,7 +61,7 @@ $messages['an'] = array(
  */
 $messages['ang'] = array(
 	'newusermessage-desc' => 'Ēacnaþ nīwe gesceapenes brūcendes mōtunge mid gewrite',
-	'newuseredit-summary' => 'Ēacende [[{{int:newusermessage-template}}|ƿilcumenǣrende]] tō þǣre ȝespreċsīdan þæs nīƿes brūcendes',
+	'newuseredit-summary' => 'Ēacniende nīwes brūcendes mōtunge mid [[{{int:newusermessage-template}}|wilcumunge ǣrend]]',
 );
 
 /** Arabic (العربية)
