@@ -178,10 +178,11 @@ $messages['ca'] = array(
 
 /** Chechen (нохчийн)
  * @author Sasan700
+ * @author Умар
  */
 $messages['ce'] = array(
 	'newusermessage-desc' => 'Чутуху хаам керла дlавазвеллачу декъашхочуьна дийцаре агlончу',
-	'newuseredit-summary' => 'Чутуху [[{{int:newusermessage-template}}|марша вогlийла]] керла декъашхон дийцаре агlончу',
+	'newuseredit-summary' => 'Чутуху [[{{int:newusermessage-template}}|маршалла]] керла декъашхочун дийцаре агӀончу',
 );
 
 /** Czech (česky)
