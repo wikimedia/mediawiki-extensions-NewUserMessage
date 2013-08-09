@@ -185,6 +185,14 @@ $messages['ce'] = array(
 	'newuseredit-summary' => 'Чутуху [[{{int:newusermessage-template}}|маршалла]] керла декъашхочун дийцаре агӀончу',
 );
 
+/** Sorani Kurdish (کوردی)
+ * @author Calak
+ */
+$messages['ckb'] = array(
+	'newusermessage-desc' => 'پەیامێک لە پەڕەکانی لێدوانی بەکارھێنەری تازە دروستکراو زید دەکا',
+	'newuseredit-summary' => 'زیادکردنی [[{{int:newusermessage-template}}|پەیامی بەخێرھاتن]] بە پەڕەی لێدوانی بەکارھێنەری نوێ',
+);
+
 /** Czech (česky)
  * @author Li-sung
  * @author Matěj Grabovský
