@@ -488,9 +488,10 @@ $messages['kn'] = array(
 
 /** Korean (한국어)
  * @author Kwj2772
+ * @author 아라
  */
 $messages['ko'] = array(
-	'newusermessage-desc' => '새로 등록한 사용자의 토론 문서에 메시지를 추가',
+	'newusermessage-desc' => '새로 만든 사용자의 토론 문서에 메시지를 추가합니다',
 	'newuseredit-summary' => '새 사용자의 토론 문서에 [[{{int:newusermessage-template}}|환영 메시지]]를 추가',
 );
 
