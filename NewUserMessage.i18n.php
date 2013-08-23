@@ -189,7 +189,7 @@ $messages['ce'] = array(
  * @author Calak
  */
 $messages['ckb'] = array(
-	'newusermessage-desc' => 'پەیامێک لە پەڕەکانی لێدوانی بەکارھێنەری تازە دروستکراو زید دەکا',
+	'newusermessage-desc' => 'پەیامێک لە پەڕەکانی لێدوانی بەکارھێنەری تازە دروستکراو زیاد دەکا',
 	'newuseredit-summary' => 'زیادکردنی [[{{int:newusermessage-template}}|پەیامی بەخێرھاتن]] بە پەڕەی لێدوانی بەکارھێنەری نوێ',
 );
 
