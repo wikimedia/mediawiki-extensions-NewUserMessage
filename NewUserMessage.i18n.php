@@ -151,6 +151,14 @@ $messages['bg'] = array(
 	'newuseredit-summary' => 'Добавяне на [[{{int:newusermessage-template}}|приветствие]] на дискусионната страница на нов потребител',
 );
 
+/** Bengali (বাংলা)
+ * @author Nasir8891
+ */
+$messages['bn'] = array(
+	'newusermessage-desc' => 'নতুন নিবন্ধিত ব্যবহারকারীদের আলাপ পাতায় বার্তা যোগ করে',
+	'newuseredit-summary' => 'নতুন ব্যবহারকারীদের আলাপ পাতায় [[{{int:newusermessage-template}}|স্বাগতম বার্তা]] সংযোজন',
+);
+
 /** Breton (brezhoneg)
  * @author Fulup
  */
