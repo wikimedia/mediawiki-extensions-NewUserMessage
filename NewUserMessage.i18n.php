@@ -31,8 +31,11 @@ $messages['en'] = array(
  */
 $messages['qqq'] = array(
 	'newusermessage-desc' => '{{desc|name=New User Message|url=http://www.mediawiki.org/wiki/Extension:NewUserMessage}}',
-	'newuseredit-summary' => 'The edit summary used when placing a new user message.',
-	'newusermessage-template' => '{{notranslate}}',
+	'newuseredit-summary' => 'The edit summary used when placing a new user message.
+
+Refers to {{msg-mw|Newusermessage-template}}.',
+	'newusermessage-template' => '{{notranslate}}
+Used in {{msg-mw|Newuseredit-summary}}.',
 	'newusermessage-editor' => "{{notranslate}}
 
 Username for welcoming new users. This user won't be able to login like a regular user.",
