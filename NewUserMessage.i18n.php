@@ -479,6 +479,13 @@ $messages['ka'] = array(
 	'newuseredit-summary' => 'დაემატა [[{{int:newusermessage-template}}|მისალმების შეტყობინება]] ახალი მომხმარებლის განხილვის გვერდზე',
 );
 
+/** Kazakh (Cyrillic script) (қазақша (кирил)‎)
+ * @author Arystanbek
+ */
+$messages['kk-cyrl'] = array(
+	'newuseredit-summary' => '[[{{int:newusermessage-template}}|Қарсы алу хабарламасы]] жаңа қатысушы талқылау бетіне қосылуда.',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer
