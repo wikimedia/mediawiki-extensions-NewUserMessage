@@ -704,8 +704,8 @@ $messages['pnb'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
-	'newusermessage-desc' => 'د يوه نوي جوړ شوي کارن-نوم د خبرواترو مخونو کې يو پيغام ورګډوي',
-	'newuseredit-summary' => 'د يوه نوي کارن د خبرواترو مخ کې د [[{{int:newusermessage-template}}|ښه راغلاست پيغام]] ورګډوي',
+	'newusermessage-desc' => 'د يوه نوي جوړ شوي کارن-نوم د خبرواترو مخونو کې يو پيغام ورگډوي',
+	'newuseredit-summary' => 'د يوه نوي کارن د خبرواترو مخ کې د [[{{int:newusermessage-template}}|ښه راغلاست پيغام]] ورگډوي',
 );
 
 /** Portuguese (português)
