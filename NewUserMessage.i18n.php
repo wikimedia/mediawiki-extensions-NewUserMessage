@@ -600,7 +600,7 @@ $messages['ml'] = array(
  * @author V.narsikar
  */
 $messages['mr'] = array(
-	'newusermessage-desc' => 'नवीन नोंदणी केलेल्या सदस्यांच्या पानावर एक संदेश वाढविते',
+	'newusermessage-desc' => 'नवीन नोंदणी केलेल्या सदस्यांच्या पानावर एक संदेश टाकते.',
 	'newuseredit-summary' => ' नविन सदस्याच्या चर्चापानावर [[{{int:newusermessage-template}}|स्वागत संदेश]] टाकला',
 );
 
