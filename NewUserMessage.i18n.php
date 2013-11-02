@@ -302,11 +302,12 @@ $messages['eu'] = array(
 );
 
 /** Persian (فارسی)
+ * @author Ebraminio
  * @author Huji
  */
 $messages['fa'] = array(
 	'newusermessage-desc' => 'یک پیغام در صفحهٔ بحث کاربرهای تازه ایجاد شده می‌افزاید',
-	'newuseredit-summary' => 'افزودن [[{{int:newusermessage-template}}|پیغام خوش‌آمد]] به صفحهٔ بحث کاربر تازه',
+	'newuseredit-summary' => 'افزودن [[{{int:newusermessage-template}}|پیام خوش‌آمد]] به صفحهٔ بحث کاربر تازه',
 );
 
 /** Finnish (suomi)
