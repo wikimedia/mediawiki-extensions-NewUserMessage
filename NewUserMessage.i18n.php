@@ -204,7 +204,7 @@ $messages['ckb'] = array(
 	'newuseredit-summary' => 'زیادکردنی [[{{int:newusermessage-template}}|پەیامی بەخێرھاتن]] بە پەڕەی لێدوانی بەکارھێنەری نوێ',
 );
 
-/** Czech (česky)
+/** Czech (čeština)
  * @author Li-sung
  * @author Matěj Grabovský
  */
