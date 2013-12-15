@@ -536,7 +536,7 @@ $messages['lad'] = array(
  */
 $messages['lb'] = array(
 	'newusermessage-desc' => "Ee Message op d'Diskussiounssäite vun neie Benotzer setzen",
-	'newuseredit-summary' => '[[{{int:newusermessage-template}}|Wëllkommens Message]] op engem neie Benotzer seng Diskussiounssäit dobäisetzen',
+	'newuseredit-summary' => '[[{{int:newusermessage-template}}|Wëllkommens Message]] op engem neie Benotzer seng Diskussiounssäit derbäisetzen',
 );
 
 /** Limburgish (Limburgs)
