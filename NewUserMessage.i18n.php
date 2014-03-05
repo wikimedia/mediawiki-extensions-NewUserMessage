@@ -906,10 +906,12 @@ $messages['uk'] = array(
 );
 
 /** Urdu (اردو)
+ * @author Muhammad Shuaib
  * @author පසිඳු කාවින්ද
  */
 $messages['ur'] = array(
 	'newusermessage-desc' => 'نو پیدا صارف کے بات صفحات کے لئے ایک پیغام کو کہتے ہیں',
+	'newuseredit-summary' => 'اضافہ [[{{int:newusermessage-template}}|پیغام خوش آمدید]] در صفحہ تبادلۂ خیال جدید صارف',
 );
 
 /** vèneto (vèneto)
