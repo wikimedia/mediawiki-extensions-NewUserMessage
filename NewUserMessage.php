@@ -13,13 +13,14 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-define( 'NEWUSERMESSAGE_VERSION', '3.4, 2012-09-26' );
+define( 'NEWUSERMESSAGE_VERSION', '3.5.0, 2014-03-28' );
 
 $wgNewUserSuppressRC = false;           // Specify whether or not the new user message creation should show up in recent changes
 $wgNewUserMinorEdit = true;             // Should the new user message creation be a minor edit?
 $wgNewUserMessageOnAutoCreate = false;  // Should auto creation (CentralAuth) trigger a new user message?
 
 $dir = __DIR__ . '/';
+$wgMessagesDirs['NewUserMessage'] = __DIR__ . '/i18n';
 $wgExtensionMessagesFiles['NewUserMessage'] = $dir . 'NewUserMessage.i18n.php';
 $wgAutoloadClasses['NewUserMessage'] = $dir . 'NewUserMessage.class.php';
 
