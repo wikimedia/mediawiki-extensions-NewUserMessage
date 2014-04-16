@@ -1,10 +1,10 @@
 {
-    "@metadata": {
-        "authors": [
-            "Harald Khan",
-            "Njardarlogar"
-        ]
-    },
-    "newusermessage-desc": "Legg inn meldingar på diskusjonssidene til nye brukarar",
-    "newuseredit-summary": "La til ei [[{{int:newusermessage-template}}|velkomstmelding]] på diskusjonssida til ein ny brukar"
+	"@metadata": {
+		"authors": [
+			"Harald Khan",
+			"Njardarlogar"
+		]
+	},
+	"newusermessage-desc": "Legg inn meldingar på diskusjonssidene til nye brukarar",
+	"newuseredit-summary": "La til ei [[{{int:newusermessage-template}}|velkomstmelding]] på diskusjonssida til ein ny brukar"
 }

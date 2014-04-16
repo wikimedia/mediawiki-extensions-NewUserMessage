@@ -1,10 +1,10 @@
 {
-    "@metadata": {
-        "authors": [
-            "Aelske",
-            "Ooswesthoesbes"
-        ]
-    },
-    "newusermessage-desc": "Voeg 'n berich toe aan de euverlèkpagina van nuuj gebroekers",
-    "newuseredit-summary": "[[{{int:newusermessage-template}}|Welkomsberich]] toegevoeg aan de euverlekpagina van de nuuje gebroeker"
+	"@metadata": {
+		"authors": [
+			"Aelske",
+			"Ooswesthoesbes"
+		]
+	},
+	"newusermessage-desc": "Voeg 'n berich toe aan de euverlèkpagina van nuuj gebroekers",
+	"newuseredit-summary": "[[{{int:newusermessage-template}}|Welkomsberich]] toegevoeg aan de euverlekpagina van de nuuje gebroeker"
 }
