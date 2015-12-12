@@ -9,30 +9,9 @@
  * @copyright 2007-10-15 [http://www.organicdesign.co.nz/nad User:Nad]
  */
 
-if ( !defined( 'MEDIAWIKI' ) ) {
-	die( 'Not an entry point.' );
+if ( function_exists( 'wfLoadExtension' ) ) {
+	wfLoadExtension( 'NewUserMessage' );
+	$wgMessagesDirs['NewUserMessage'] = __DIR__ . '/i18n';
+} else {
+	die( 'This version of the NewUserMessage extension requires MediaWiki 1.25+' );
 }
-
-define( 'NEWUSERMESSAGE_VERSION', '3.5.0, 2014-03-28' );
-
-$wgNewUserSuppressRC = false;           // Specify whether or not the new user message creation should show up in recent changes
-$wgNewUserMinorEdit = true;             // Should the new user message creation be a minor edit?
-$wgNewUserMessageOnAutoCreate = false;  // Should auto creation (CentralAuth) trigger a new user message?
-
-$dir = __DIR__ . '/';
-$wgMessagesDirs['NewUserMessage'] = __DIR__ . '/i18n';
-$wgExtensionMessagesFiles['NewUserMessage'] = $dir . 'NewUserMessage.i18n.php';
-$wgAutoloadClasses['NewUserMessage'] = $dir . 'NewUserMessage.class.php';
-
-$wgHooks['AddNewAccount'][] = 'NewUserMessage::createNewUserMessage';
-$wgHooks['AuthPluginAutoCreate'][] = 'NewUserMessage::createNewUserMessageAutoCreated';
-$wgHooks['UserGetReservedNames'][] = 'NewUserMessage::onUserGetReservedNames';
-
-$wgExtensionCredits['other'][] = array(
-	'path'           => __FILE__,
-	'name'           => 'NewUserMessage',
-	'version'        => NEWUSERMESSAGE_VERSION,
-	'author'         => array( "[http://www.organicdesign.co.nz/User:Nad Nad]", 'Siebrand Mazeland' ),
-	'descriptionmsg' => 'newusermessage-desc',
-	'url'            => 'https://www.mediawiki.org/wiki/Extension:NewUserMessage',
-);
