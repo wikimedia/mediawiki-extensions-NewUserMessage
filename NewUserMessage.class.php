@@ -225,7 +225,7 @@ class NewUserMessage {
 		$flags = $wikiPage->checkFlags( $flags );
 
 		if ( $flags & EDIT_UPDATE ) {
-			$text = $wikiPage->getRawText() . "\n" . $text;
+			$text = $wikiPage->getContent( Revision::RAW ) . "\n" . $text;
 		}
 		$status = $wikiPage->doEdit( $text, $summary, $flags, false, $editor );
 		return $status->isGood();
