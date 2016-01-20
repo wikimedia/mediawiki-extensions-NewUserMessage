@@ -17,12 +17,10 @@
 	"AutoloadClasses": {
 		"NewUserMessage": "NewUserMessage.class.php"
 	},
+	"callback": "NewUserMessage::onRegistration",
 	"Hooks": {
-		"AddNewAccount": [
-			"NewUserMessage::createNewUserMessage"
-		],
-		"AuthPluginAutoCreate": [
-			"NewUserMessage::createNewUserMessageAutoCreated"
+		"LocalUserCreated": [
+			"NewUserMessage::onLocalUserCreated"
 		],
 		"UserGetReservedNames": [
 			"NewUserMessage::onUserGetReservedNames"
