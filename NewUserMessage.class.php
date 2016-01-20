@@ -1,4 +1,7 @@
 <?php
+
+use MediaWiki\Auth\AuthManager;
+
 /** Extension:NewUserMessage
  *
  * @file
@@ -11,6 +14,23 @@
  */
 
 class NewUserMessage {
+	/**
+	 * Called when the extension is registered, sets up B/C hooks.
+	 */
+	static function onRegistration() {
+		global $wgVersion;
+		if ( version_compare( $wgVersion, '1.26', '<' ) ) {
+			// LocalUserCreated was added in 1.26; AddNewAccount and AuthPluginAutoCreate were
+			// deprecated, but still called, so avoid calling twice
+			Hooks::register( 'AddNewAccount', function ( $user, $byEmail ) {
+				return NewUserMessage::onLocalUserCreated( $user, false );
+			} );
+			Hooks::register( 'AuthPluginAutoCreate', function ( $user ) {
+				return NewUserMessage::onLocalUserCreated( $user, true );
+			} );
+		}
+	}
+
 	/**
 	 * Produce the editor for new user messages.
 	 * @return User
@@ -148,7 +168,7 @@ class NewUserMessage {
 	 * @param $user User object
 	 * @return bool
 	 */
-	static function createNewUserMessage( $user ) {
+	protected static function createNewUserMessage( $user ) {
 		$talk = $user->getTalkPage();
 
 		// Only leave message if user doesn't have a talk page yet
@@ -180,14 +200,15 @@ class NewUserMessage {
 	}
 
 	/**
-	 * Hook function to create a message on an auto-created user
+	 * Hook function to create new user pages when an account is created or autocreated
 	 * @param $user User object of the user
+	 * @param $autocreated bool
 	 * @return bool
 	 */
-	static function createNewUserMessageAutoCreated( $user ) {
+	public static function onLocalUserCreated( User $user, $autocreated ) {
 		global $wgNewUserMessageOnAutoCreate;
 
-		if ( $wgNewUserMessageOnAutoCreate ) {
+		if ( $wgNewUserMessageOnAutoCreate || !$autocreated ) {
 			DeferredUpdates::addCallableUpdate(
 				function () use ( $user ) {
 					NewUserMessage::createNewUserMessage( $user );
