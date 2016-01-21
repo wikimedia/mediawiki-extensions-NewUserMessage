@@ -1,9 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Fulup"
+			"Fulup",
+			"Y-M D"
 		]
 	},
 	"newusermessage-desc": "Ouzhpennañ a ra ur gemennadenn war pajenn gaozeal an implijerien nevez",
-	"newuseredit-summary": "Oc'h ouzhpennañ [[{{int:newusermessage-template}}|ur c'hemenn degemer mat]] war pajenn gaozeal an implijer nevez"
+	"newuseredit-summary": "Oc'h ouzhpennañ [[{{int:newusermessage-template}}|ur c'hemenn degemer]] war pajenn bersonel an implijer nevez"
 }
