@@ -188,7 +188,12 @@ class NewUserMessage {
 		global $wgNewUserMessageOnAutoCreate;
 
 		if ( $wgNewUserMessageOnAutoCreate ) {
-			NewUserMessage::createNewUserMessage( $user );
+			DeferredUpdates::addCallableUpdate(
+				function () use ( $user ) {
+					NewUserMessage::createNewUserMessage( $user );
+				},
+				DeferredUpdates::PRESEND
+			);
 		}
 
 		return true;
