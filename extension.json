@@ -2,11 +2,12 @@
 	"name": "NewUserMessage",
 	"version": "3.5.0, 2014-03-28",
 	"author": [
-		"[http://www.organicdesign.co.nz/User:Nad Nad]",
+		"[https://www.organicdesign.co.nz/User:Nad Aran Dunkley]",
 		"Siebrand Mazeland"
 	],
 	"url": "https://www.mediawiki.org/wiki/Extension:NewUserMessage",
 	"descriptionmsg": "newusermessage-desc",
+	"license-name": "GPL-2.0+",
 	"type": "other",
 	"MessagesDirs": {
 		"NewUserMessage": [
