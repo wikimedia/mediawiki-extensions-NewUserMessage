@@ -118,7 +118,7 @@ class NewUserMessage {
 	}
 
 	/**
-	 * Produce the flags to set on Article::doEdit
+	 * Produce the flags to set on Article::doEditContent
 	 * @return Int
 	 */
 	static function fetchFlags() {
@@ -253,7 +253,14 @@ class NewUserMessage {
 		if ( $flags & EDIT_UPDATE ) {
 			$text = $wikiPage->getContent( Revision::RAW ) . "\n" . $text;
 		}
-		$status = $wikiPage->doEdit( $text, $summary, $flags, false, $editor );
+
+		$status = $wikiPage->doEditContent(
+			ContentHandler::makeContent( $text, $wikiPage->getTitle() ),
+			$summary,
+			$flags,
+			false,
+			$editor
+		);
 		return $status->isGood();
 	}
 
