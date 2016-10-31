@@ -1,6 +1,6 @@
 {
 	"name": "NewUserMessage",
-	"version": "3.5.0, 2014-03-28",
+	"version": "3.6.0, 2016-10-31",
 	"author": [
 		"[https://www.organicdesign.co.nz/User:Nad Aran Dunkley]",
 		"Siebrand Mazeland"
@@ -17,7 +17,6 @@
 	"AutoloadClasses": {
 		"NewUserMessage": "NewUserMessage.class.php"
 	},
-	"callback": "NewUserMessage::onRegistration",
 	"Hooks": {
 		"LocalUserCreated": [
 			"NewUserMessage::onLocalUserCreated"

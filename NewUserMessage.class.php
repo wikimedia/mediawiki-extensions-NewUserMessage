@@ -15,27 +15,10 @@ use MediaWiki\Auth\AuthManager;
 
 class NewUserMessage {
 	/**
-	 * Called when the extension is registered, sets up B/C hooks.
-	 */
-	static function onRegistration() {
-		global $wgVersion;
-		if ( version_compare( $wgVersion, '1.26', '<' ) ) {
-			// LocalUserCreated was added in 1.26; AddNewAccount and AuthPluginAutoCreate were
-			// deprecated, but still called, so avoid calling twice
-			Hooks::register( 'AddNewAccount', function ( $user, $byEmail ) {
-				return NewUserMessage::onLocalUserCreated( $user, false );
-			} );
-			Hooks::register( 'AuthPluginAutoCreate', function ( $user ) {
-				return NewUserMessage::onLocalUserCreated( $user, true );
-			} );
-		}
-	}
-
-	/**
 	 * Produce the editor for new user messages.
-	 * @return User
+	 * @return User|bool
 	 */
-	static function fetchEditor() {
+	private static function fetchEditor() {
 		// Create a user object for the editing user and add it to the
 		// database if it is not there already
 		$editor = User::newFromName( self::getMsg( 'newusermessage-editor' )->text() );
@@ -98,7 +81,9 @@ class NewUserMessage {
 	 * @return String
 	 */
 	static function fetchSubject() {
-		return self::fetchTemplateIfExists( self::getMsg( 'newusermessage-template-subject' )->text() );
+		return self::fetchTemplateIfExists(
+			self::getMsg( 'newusermessage-template-subject' )->text()
+		);
 	}
 
 	/**
@@ -181,7 +166,8 @@ class NewUserMessage {
 			$editor = self::fetchEditor();
 			$flags = self::fetchFlags();
 
-			# Do not add a message if the username is invalid or if the account that adds it, is blocked
+			# Do not add a message if the username is invalid or if the account that adds it,
+			# is blocked
 			if ( !$editor || $editor->isBlocked() ) {
 				return true;
 			}
@@ -222,7 +208,7 @@ class NewUserMessage {
 
 	/**
 	 * Hook function to provide a reserved name
-	 * @param $names Array
+	 * @param $names array
 	 * @return bool
 	 */
 	static function onUserGetReservedNames( &$names ) {
@@ -246,7 +232,8 @@ class NewUserMessage {
 	 * @return boolean true if it was successful
 	 */
 	public static function leaveUserMessage( $user, $wikiPage, $subject, $text, $signature,
-			$summary, $editor, $flags ) {
+			$summary, $editor, $flags
+	) {
 		$text = self::formatUserMessage( $subject, $text, $signature );
 		$flags = $wikiPage->checkFlags( $flags );
 
@@ -283,6 +270,10 @@ class NewUserMessage {
 		return $contents;
 	}
 
+	/**
+	 * @param $name
+	 * @return Message
+	 */
 	static protected function getMsg( $name ) {
 		return wfMessage( $name )->inContentLanguage();
 	}
