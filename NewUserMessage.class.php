@@ -24,7 +24,7 @@ class NewUserMessage {
 		$editor = User::newFromName( self::getMsg( 'newusermessage-editor' )->text() );
 
 		if ( !$editor ) {
-			return false; # Invalid user name
+			return false; // Invalid user name
 		}
 
 		if ( !$editor->isLoggedIn() ) {
@@ -44,7 +44,7 @@ class NewUserMessage {
 
 		if ( !self::getMsg( 'newusermessage-signatures' )->isDisabled() ) {
 			$pattern = '/^\* ?(.*?)$/m';
-			$signatureList = array();
+			$signatureList = [];
 			preg_match_all( $pattern, $signatures, $signatureList, PREG_SET_ORDER );
 			if ( count( $signatureList ) > 0 ) {
 				$rand = rand( 0, count( $signatureList ) - 1 );
@@ -110,8 +110,12 @@ class NewUserMessage {
 		global $wgNewUserMinorEdit, $wgNewUserSuppressRC;
 
 		$flags = EDIT_NEW;
-		if ( $wgNewUserMinorEdit ) $flags = $flags | EDIT_MINOR;
-		if ( $wgNewUserSuppressRC ) $flags = $flags | EDIT_SUPPRESS_RC;
+		if ( $wgNewUserMinorEdit ) {
+			$flags = $flags | EDIT_MINOR;
+		}
+		if ( $wgNewUserSuppressRC ) {
+			$flags = $flags | EDIT_SUPPRESS_RC;
+		}
 
 		return $flags;
 	}
@@ -125,7 +129,7 @@ class NewUserMessage {
 	 * @param $preparse bool If provided, then preparse the string using a Parser
 	 * @return string
 	 */
-	static private function substString( $str, $user, $editor, $talk, $preparse = null ) {
+	private static function substString( $str, $user, $editor, $talk, $preparse = null ) {
 		$realName = $user->getRealName();
 		$name = $user->getName();
 
@@ -258,7 +262,7 @@ class NewUserMessage {
 	 * @param $signature string the signature, if provided.
 	 * @return string in wiki text with complete user message
 	 */
-	static protected function formatUserMessage( $subject, $text, $signature ) {
+	protected static function formatUserMessage( $subject, $text, $signature ) {
 		$contents = "";
 		$signature = empty( $signature ) ? "~~~~" : "{$signature} ~~~~~";
 
@@ -274,7 +278,7 @@ class NewUserMessage {
 	 * @param $name
 	 * @return Message
 	 */
-	static protected function getMsg( $name ) {
+	protected static function getMsg( $name ) {
 		return wfMessage( $name )->inContentLanguage();
 	}
 }
