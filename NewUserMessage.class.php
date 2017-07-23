@@ -233,7 +233,7 @@ class NewUserMessage {
 	 *                        "{{MediaWiki:usermessage-editor}}"
 	 * @param $flags int default edit flags
 	 *
-	 * @return boolean true if it was successful
+	 * @return bool true if it was successful
 	 */
 	public static function leaveUserMessage( $user, $wikiPage, $subject, $text, $signature,
 			$summary, $editor, $flags
