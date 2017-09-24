@@ -1,7 +1,5 @@
 <?php
 
-use MediaWiki\Auth\AuthManager;
-
 /** Extension:NewUserMessage
  *
  * @file
