@@ -55,7 +55,7 @@ class NewUserMessage {
 
 	/**
 	 * Return the template name if it exists, or '' otherwise.
-	 * @param $template string with page name of user message template
+	 * @param string $template string with page name of user message template
 	 * @return string
 	 */
 	static function fetchTemplateIfExists( $template ) {
@@ -120,11 +120,11 @@ class NewUserMessage {
 
 	/**
 	 * Take care of substition on the string in a uniform manner
-	 * @param $str string
-	 * @param $user User
-	 * @param $editor User
-	 * @param $talk Title
-	 * @param $preparse bool If provided, then preparse the string using a Parser
+	 * @param string $str
+	 * @param User $user
+	 * @param User $editor
+	 * @param Title $talk
+	 * @param bool $preparse If provided, then preparse the string using a Parser
 	 * @return string
 	 */
 	private static function substString( $str, $user, $editor, $talk, $preparse = null ) {
@@ -152,7 +152,7 @@ class NewUserMessage {
 
 	/**
 	 * Add the message if the users talk page does not already exist
-	 * @param $user User object
+	 * @param User $user User object
 	 * @return bool
 	 */
 	protected static function createNewUserMessage( $user ) {
@@ -189,8 +189,8 @@ class NewUserMessage {
 
 	/**
 	 * Hook function to create new user pages when an account is created or autocreated
-	 * @param $user User object of the user
-	 * @param $autocreated bool
+	 * @param User $user object of the user
+	 * @param bool $autocreated
 	 * @return bool
 	 */
 	public static function onLocalUserCreated( User $user, $autocreated ) {
@@ -210,7 +210,7 @@ class NewUserMessage {
 
 	/**
 	 * Hook function to provide a reserved name
-	 * @param $names array
+	 * @param array &$names
 	 * @return bool
 	 */
 	static function onUserGetReservedNames( &$names ) {
@@ -220,16 +220,16 @@ class NewUserMessage {
 
 	/**
 	 * Leave a user a message
-	 * @param $user User to message
-	 * @param $wikiPage WikiPage user talk page
-	 * @param $subject string with the subject of the message
-	 * @param $text string with the message to leave
-	 * @param $signature string to leave in the signature
-	 * @param $summary string with the summary for this change, defaults to
+	 * @param User $user User to message
+	 * @param WikiPage $wikiPage user talk page
+	 * @param string $subject string with the subject of the message
+	 * @param string $text string with the message to leave
+	 * @param string $signature string to leave in the signature
+	 * @param string $summary string with the summary for this change, defaults to
 	 *                        "Leave system message."
-	 * @param $editor User leaving the message, defaults to
+	 * @param User $editor User leaving the message, defaults to
 	 *                        "{{MediaWiki:usermessage-editor}}"
-	 * @param $flags int default edit flags
+	 * @param int $flags default edit flags
 	 *
 	 * @return bool true if it was successful
 	 */
@@ -255,9 +255,9 @@ class NewUserMessage {
 
 	/**
 	 * Format the user message using a hook, a template, or, failing these, a static format.
-	 * @param $subject   string the subject of the message
-	 * @param $text      string the content of the message
-	 * @param $signature string the signature, if provided.
+	 * @param string $subject the subject of the message
+	 * @param string $text the content of the message
+	 * @param string $signature the signature, if provided.
 	 * @return string in wiki text with complete user message
 	 */
 	protected static function formatUserMessage( $subject, $text, $signature ) {
@@ -273,7 +273,7 @@ class NewUserMessage {
 	}
 
 	/**
-	 * @param $name
+	 * @param string $name
 	 * @return Message
 	 */
 	protected static function getMsg( $name ) {
