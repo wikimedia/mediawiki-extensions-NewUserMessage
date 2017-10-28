@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Benel"
+			"Benel",
+			"Bunukwiki"
 		]
 	},
-	"newusermessage-desc": "i baluhay panganganen ku canghaw a misaungayay a sasukamu kasabelih micunus cacay palatuh."
+	"newusermessage-desc": "i baluhay panganganen ku canghaw a misaungayay a sasukamu kasabelih micunus cacay palatuh.",
+	"newuseredit-summary": "i baluhay misaungayay a sasukamu kasabelih micunus [[{{int:newusermessage-template}}|malimulak tayni palatuh]]"
 }
