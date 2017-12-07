@@ -4,6 +4,6 @@
 			"Bjankuloski06"
 		]
 	},
-	"newusermessage-desc": "Поставува порака на страниците за разговор на новосоздадени корисници",
-	"newuseredit-summary": "Додавање на [[{{int:newusermessage-template}}|добредојде]] на страницата за разговор на нов корисник"
+	"newusermessage-desc": "Поставува порака на разговорните страници на новосоздадени корисници",
+	"newuseredit-summary": "Додавање на [[{{int:newusermessage-template}}|добредојде]] на разговорната страница на нов корисник"
 }
