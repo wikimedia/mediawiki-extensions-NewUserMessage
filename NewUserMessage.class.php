@@ -6,7 +6,7 @@
  * @ingroup Extensions
  *
  * @author [http://www.organicdesign.co.nz/nad User:Nad]
- * @license GNU General Public Licence 2.0 or later
+ * @license GPL-2.0-or-later
  * @copyright 2007-10-15 [http://www.organicdesign.co.nz/nad User:Nad]
  * @copyright 2009 Siebrand Mazeland
  */
