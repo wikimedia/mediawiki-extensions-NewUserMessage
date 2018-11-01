@@ -36,7 +36,7 @@ class NewUserMessage {
 	 * Produce a (possibly random) signature.
 	 * @return String
 	 */
-	static function fetchSignature() {
+	private static function fetchSignature() {
 		$signatures = self::getMsg( 'newusermessage-signatures' )->text();
 		$signature = '';
 
@@ -58,7 +58,7 @@ class NewUserMessage {
 	 * @param string $template string with page name of user message template
 	 * @return string
 	 */
-	static function fetchTemplateIfExists( $template ) {
+	private static function fetchTemplateIfExists( $template ) {
 		$text = Title::newFromText( $template );
 
 		if ( !$text ) {
@@ -78,7 +78,7 @@ class NewUserMessage {
 	 * Produce a subject for the message.
 	 * @return String
 	 */
-	static function fetchSubject() {
+	private static function fetchSubject() {
 		return self::fetchTemplateIfExists(
 			self::getMsg( 'newusermessage-template-subject' )->text()
 		);
@@ -88,7 +88,7 @@ class NewUserMessage {
 	 * Produce the template that contains the text of the message.
 	 * @return String
 	 */
-	static function fetchText() {
+	private static function fetchText() {
 		$template = self::getMsg( 'newusermessage-template-body' )->text();
 
 		$title = Title::newFromText( $template );
@@ -104,7 +104,7 @@ class NewUserMessage {
 	 * Produce the flags to set on Article::doEditContent
 	 * @return Int
 	 */
-	static function fetchFlags() {
+	private static function fetchFlags() {
 		global $wgNewUserMinorEdit, $wgNewUserSuppressRC;
 
 		$flags = EDIT_NEW;
@@ -213,7 +213,7 @@ class NewUserMessage {
 	 * @param array &$names
 	 * @return bool
 	 */
-	static function onUserGetReservedNames( &$names ) {
+	public static function onUserGetReservedNames( &$names ) {
 		$names[] = 'msg:newusermessage-editor';
 		return true;
 	}
