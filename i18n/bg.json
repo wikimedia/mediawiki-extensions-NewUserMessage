@@ -2,9 +2,10 @@
 	"@metadata": {
 		"authors": [
 			"DCLXVI",
-			"Spiritia"
+			"Spiritia",
+			"StanProg"
 		]
 	},
 	"newusermessage-desc": "Добавя съобщение на беседата на новорегистрираните потребители",
-	"newuseredit-summary": "Добавяне на [[{{int:newusermessage-template}}|приветствие]] на дискусионната страница на нов потребител"
+	"newuseredit-summary": "Добавяне на [[{{int:newusermessage-template}}|приветствие]] на беседата на нов потребител"
 }
