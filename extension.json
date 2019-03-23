@@ -15,7 +15,7 @@
 		]
 	},
 	"AutoloadClasses": {
-		"NewUserMessage": "NewUserMessage.class.php"
+		"NewUserMessage": "includes/NewUserMessage.php"
 	},
 	"Hooks": {
 		"LocalUserCreated": [
