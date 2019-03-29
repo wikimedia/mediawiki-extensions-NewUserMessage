@@ -15,7 +15,11 @@
 		]
 	},
 	"AutoloadClasses": {
-		"NewUserMessage": "includes/NewUserMessage.php"
+		"NewUserMessage": "includes/NewUserMessage.php",
+		"NewUserMessageJob": "includes/NewUserMessageJob.php"
+	},
+	"JobClasses": {
+		"newUserMessageJob": "NewUserMessageJob"
 	},
 	"Hooks": {
 		"LocalUserCreated": [

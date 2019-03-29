@@ -155,7 +155,7 @@ class NewUserMessage {
 	 * @param User $user User object
 	 * @return bool
 	 */
-	protected static function createNewUserMessage( $user ) {
+	public static function createNewUserMessage( $user ) {
 		$talk = $user->getTalkPage();
 
 		// Only leave message if user doesn't have a talk page yet
@@ -196,13 +196,16 @@ class NewUserMessage {
 	public static function onLocalUserCreated( User $user, $autocreated ) {
 		global $wgNewUserMessageOnAutoCreate;
 
-		if ( $wgNewUserMessageOnAutoCreate || !$autocreated ) {
+		if ( !$autocreated ) {
 			DeferredUpdates::addCallableUpdate(
 				function () use ( $user ) {
 					NewUserMessage::createNewUserMessage( $user );
 				},
 				DeferredUpdates::PRESEND
 			);
+		} elseif ( $wgNewUserMessageOnAutoCreate ) {
+			JobQueueGroup::singleton()->lazyPush(
+				new NewUserMessageJob( [ 'userId' => $user->getId() ] ) );
 		}
 
 		return true;
