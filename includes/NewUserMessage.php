@@ -199,9 +199,13 @@ class NewUserMessage {
 		if ( $wgNewUserMessageOnAutoCreate || !$autocreated ) {
 			DeferredUpdates::addCallableUpdate(
 				function () use ( $user ) {
+					if ( $user->isBot() ) {
+						return; // not a human
+					}
+
 					NewUserMessage::createNewUserMessage( $user );
 				},
-				DeferredUpdates::PRESEND
+				$autocreated ? DeferredUpdates::POSTSEND : DeferredUpdates::PRESEND
 			);
 		}
 
