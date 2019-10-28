@@ -11,6 +11,8 @@
  * @copyright 2009 Siebrand Mazeland
  */
 
+use MediaWiki\MediaWikiServices;
+
 class NewUserMessage {
 	/**
 	 * Produce the editor for new user messages.
@@ -142,9 +144,8 @@ class NewUserMessage {
 		}
 
 		if ( $preparse ) {
-			global $wgParser;
-
-			$str = $wgParser->preSaveTransform( $str, $talk, $editor, new ParserOptions );
+			$str = MediaWikiServices::getInstance()->getParser()
+				->preSaveTransform( $str, $talk, $editor, new ParserOptions );
 		}
 
 		return $str;
