@@ -206,7 +206,7 @@ class NewUserMessage {
 
 					NewUserMessage::createNewUserMessage( $user );
 				},
-				$autocreated ? DeferredUpdates::POSTSEND : DeferredUpdates::PRESEND
+				DeferredUpdates::PRESEND
 			);
 		} elseif ( $wgNewUserMessageOnAutoCreate ) {
 			JobQueueGroup::singleton()->lazyPush(
