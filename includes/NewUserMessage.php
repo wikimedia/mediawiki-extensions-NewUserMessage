@@ -126,7 +126,7 @@ class NewUserMessage {
 	 * @param User $user
 	 * @param User $editor
 	 * @param Title $talk
-	 * @param bool $preparse If provided, then preparse the string using a Parser
+	 * @param string|null $preparse If provided, then preparse the string using a Parser
 	 * @return string
 	 */
 	private static function substString( $str, $user, $editor, $talk, $preparse = null ) {
@@ -248,7 +248,10 @@ class NewUserMessage {
 		$flags = $wikiPage->checkFlags( $flags );
 
 		if ( $flags & EDIT_UPDATE ) {
-			$text = $wikiPage->getContent( Revision::RAW ) . "\n" . $text;
+			$content = $wikiPage->getContent( Revision::RAW );
+			if ( $content !== null ) {
+				$text = $content->getNativeData() . "\n" . $text;
+			}
 		}
 
 		$status = $wikiPage->doEditContent(
