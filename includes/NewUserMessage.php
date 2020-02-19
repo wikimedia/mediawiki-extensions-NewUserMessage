@@ -103,7 +103,7 @@ class NewUserMessage {
 	}
 
 	/**
-	 * Produce the flags to set on Article::doEditContent
+	 * Produce the flags to set on WikiPage::doEditContent
 	 * @return Int
 	 */
 	private static function fetchFlags() {
