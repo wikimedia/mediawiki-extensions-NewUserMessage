@@ -144,8 +144,12 @@ class NewUserMessage {
 		}
 
 		if ( $preparse ) {
-			$str = MediaWikiServices::getInstance()->getParser()
-				->preSaveTransform( $str, $talk, $editor, new ParserOptions );
+			$str = MediaWikiServices::getInstance()->getParser()->preSaveTransform(
+				$str,
+				$talk,
+				$editor,
+				new ParserOptions( $user )
+			);
 		}
 
 		return $str;
