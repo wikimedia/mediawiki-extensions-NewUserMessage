@@ -36,7 +36,7 @@ class NewUserMessage {
 
 	/**
 	 * Produce a (possibly random) signature.
-	 * @return String
+	 * @return string
 	 */
 	private static function fetchSignature() {
 		$signatures = self::getMsg( 'newusermessage-signatures' )->text();
@@ -78,7 +78,7 @@ class NewUserMessage {
 
 	/**
 	 * Produce a subject for the message.
-	 * @return String
+	 * @return string
 	 */
 	private static function fetchSubject() {
 		return self::fetchTemplateIfExists(
@@ -88,7 +88,7 @@ class NewUserMessage {
 
 	/**
 	 * Produce the template that contains the text of the message.
-	 * @return String
+	 * @return string
 	 */
 	private static function fetchText() {
 		$template = self::getMsg( 'newusermessage-template-body' )->text();
