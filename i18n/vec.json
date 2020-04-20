@@ -1,9 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Candalua"
+			"Candalua",
+			"Fierodelveneto"
 		]
 	},
-	"newusermessage-desc": "Zonta un messagio a le pagine de discussion dei utenti novi",
+	"newusermessage-desc": "Xonta on mesajo in te łe pàjine de discusion de on utente che el se ga pena rejistrà.",
 	"newuseredit-summary": "Zonto un [[{{int:newusermessage-template}}|mesajo de benvegnù]] a la pàxena de discussion de 'l novo utente"
 }
