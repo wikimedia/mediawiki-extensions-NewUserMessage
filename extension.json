@@ -33,9 +33,15 @@
 		]
 	},
 	"config": {
-		"NewUserSuppressRC": false,
-		"NewUserMinorEdit": true,
-		"NewUserMessageOnAutoCreate": false
+		"NewUserSuppressRC": {
+			"value": false
+		},
+		"NewUserMinorEdit": {
+			"value": true
+		},
+		"NewUserMessageOnAutoCreate": {
+			"value": false
+		}
 	},
-	"manifest_version": 1
+	"manifest_version": 2
 }
