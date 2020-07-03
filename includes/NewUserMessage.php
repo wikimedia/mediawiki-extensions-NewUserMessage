@@ -12,6 +12,7 @@
  */
 
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Revision\RevisionRecord;
 
 class NewUserMessage {
 	/**
@@ -252,7 +253,7 @@ class NewUserMessage {
 		$flags = $wikiPage->checkFlags( $flags );
 
 		if ( $flags & EDIT_UPDATE ) {
-			$content = $wikiPage->getContent( Revision::RAW );
+			$content = $wikiPage->getContent( RevisionRecord::RAW );
 			if ( $content !== null ) {
 				$text = $content->getNativeData() . "\n" . $text;
 			}
