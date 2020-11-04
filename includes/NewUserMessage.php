@@ -105,7 +105,7 @@ class NewUserMessage {
 
 	/**
 	 * Produce the flags to set on WikiPage::doEditContent
-	 * @return Int
+	 * @return int
 	 */
 	private static function fetchFlags() {
 		global $wgNewUserMinorEdit, $wgNewUserSuppressRC;
