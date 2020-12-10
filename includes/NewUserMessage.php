@@ -112,10 +112,10 @@ class NewUserMessage {
 
 		$flags = EDIT_NEW;
 		if ( $wgNewUserMinorEdit ) {
-			$flags = $flags | EDIT_MINOR;
+			$flags |= EDIT_MINOR;
 		}
 		if ( $wgNewUserSuppressRC ) {
-			$flags = $flags | EDIT_SUPPRESS_RC;
+			$flags |= EDIT_SUPPRESS_RC;
 		}
 
 		return $flags;
