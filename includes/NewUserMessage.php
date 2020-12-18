@@ -28,7 +28,7 @@ class NewUserMessage {
 			return false; // Invalid user name
 		}
 
-		if ( !$editor->isLoggedIn() ) {
+		if ( !$editor->isRegistered() ) {
 			$editor->addToDatabase();
 		}
 
