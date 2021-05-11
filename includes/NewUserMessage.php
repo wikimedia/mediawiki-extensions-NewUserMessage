@@ -204,7 +204,7 @@ class NewUserMessage {
 
 		if ( !$autocreated ) {
 			DeferredUpdates::addCallableUpdate(
-				function () use ( $user ) {
+				static function () use ( $user ) {
 					if ( $user->isBot() ) {
 						return; // not a human
 					}
