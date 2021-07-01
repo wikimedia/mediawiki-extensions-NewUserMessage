@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
+			"Les Meloures",
 			"Robby",
 			"Soued031"
 		]
 	},
 	"newusermessage-desc": "Ee Message op d'Diskussiounssäite vun neie Benotzer setzen",
-	"newuseredit-summary": "[[{{int:newusermessage-template}}|Wëllkommens Message]] op engem neie Benotzer seng Diskussiounssäit dobäisetzen"
+	"newuseredit-summary": "[[{{int:newusermessage-template}}|Wëllkomm-Message]] op engem neie Benotzer seng Diskussiounssäit derbäisetzen"
 }
