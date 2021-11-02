@@ -176,7 +176,7 @@ class NewUserMessage {
 
 			# Do not add a message if the username is invalid or if the account that adds it,
 			# is blocked
-			if ( !$editor || $editor->isBlocked() ) {
+			if ( !$editor || $editor->getBlock() ) {
 				return true;
 			}
 
