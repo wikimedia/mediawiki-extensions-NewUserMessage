@@ -2,9 +2,10 @@
 	"@metadata": {
 		"authors": [
 			"Joseph",
-			"Karduelis"
+			"Karduelis",
+			"LuCKY"
 		]
 	},
 	"newusermessage-desc": "Yeni oluşturulmuş kullanıcının tartışma sayfasına bir mesaj ekler",
-	"newuseredit-summary": "Yeni kullanıcının tartışma sayfasına [[{{int:newusermessage-template}}|hoşgeldin mesajı]] ekleniyor"
+	"newuseredit-summary": "Yeni kullanıcının tartışma sayfasına [[{{int:newusermessage-template}}|hoş geldin mesajı]] ekleniyor"
 }
