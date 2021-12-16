@@ -166,7 +166,7 @@ class NewUserMessage {
 
 		// Only leave message if user doesn't have a talk page yet
 		if ( !$talk->exists() ) {
-			$wikiPage = WikiPage::factory( $talk );
+			$wikiPage = MediaWikiServices::getInstance()->getWikiPageFactory()->newFromTitle( $talk );
 			$subject = self::fetchSubject();
 			$text = self::fetchText();
 			$signature = self::fetchSignature();
