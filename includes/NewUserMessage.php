@@ -214,7 +214,7 @@ class NewUserMessage {
 				DeferredUpdates::PRESEND
 			);
 		} elseif ( $wgNewUserMessageOnAutoCreate ) {
-			JobQueueGroup::singleton()->lazyPush(
+			MediaWikiServices::getInstance()->getJobQueueGroup()->lazyPush(
 				new NewUserMessageJob( [ 'userId' => $user->getId() ] ) );
 		}
 
