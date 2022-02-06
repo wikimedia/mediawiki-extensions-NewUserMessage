@@ -7,6 +7,12 @@
  * @license GPL-2.0-or-later
  */
 
+namespace MediaWiki\Extension\NewUserMessage;
+
+use GenericParameterJob;
+use Job;
+use User;
+
 /**
  * Job to create the initial message on a user's talk page
  *

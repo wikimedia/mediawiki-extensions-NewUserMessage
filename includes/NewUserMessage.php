@@ -11,8 +11,17 @@
  * @copyright 2009 Siebrand Mazeland
  */
 
+namespace MediaWiki\Extension\NewUserMessage;
+
+use ContentHandler;
+use DeferredUpdates;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\RevisionRecord;
+use Message;
+use ParserOptions;
+use Title;
+use User;
+use WikiPage;
 
 class NewUserMessage {
 	/**
@@ -25,7 +34,7 @@ class NewUserMessage {
 		$editor = User::newFromName( self::getMsg( 'newusermessage-editor' )->text() );
 
 		if ( !$editor ) {
-			return false; // Invalid user name
+			return false; // Invalid username
 		}
 
 		if ( !$editor->isRegistered() ) {

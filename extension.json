@@ -17,19 +17,18 @@
 			"i18n"
 		]
 	},
-	"AutoloadClasses": {
-		"NewUserMessage": "includes/NewUserMessage.php",
-		"NewUserMessageJob": "includes/NewUserMessageJob.php"
+	"AutoloadNamespaces": {
+		"MediaWiki\\Extension\\NewUserMessage\\": "includes/"
 	},
 	"JobClasses": {
-		"newUserMessageJob": "NewUserMessageJob"
+		"newUserMessageJob": "MediaWiki\\Extension\\NewUserMessage\\NewUserMessageJob"
 	},
 	"Hooks": {
 		"LocalUserCreated": [
-			"NewUserMessage::onLocalUserCreated"
+			"MediaWiki\\Extension\\NewUserMessage\\NewUserMessage::onLocalUserCreated"
 		],
 		"UserGetReservedNames": [
-			"NewUserMessage::onUserGetReservedNames"
+			"MediaWiki\\Extension\\NewUserMessage\\NewUserMessage::onUserGetReservedNames"
 		]
 	},
 	"config": {
