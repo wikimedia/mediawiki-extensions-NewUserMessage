@@ -15,6 +15,7 @@ namespace MediaWiki\Extension\NewUserMessage;
 
 use MediaWiki\Auth\Hook\LocalUserCreatedHook;
 use MediaWiki\Content\ContentHandler;
+use MediaWiki\Content\TextContent;
 use MediaWiki\Deferred\DeferredUpdates;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Message\Message;
@@ -270,8 +271,8 @@ class NewUserMessage implements
 
 		if ( $flags & EDIT_UPDATE ) {
 			$content = $wikiPage->getContent( RevisionRecord::RAW );
-			if ( $content !== null ) {
-				$text = $content->getNativeData() . "\n" . $text;
+			if ( $content !== null && $content instanceof TextContent ) {
+				$text = $content->getText() . "\n" . $text;
 			}
 		}
 
