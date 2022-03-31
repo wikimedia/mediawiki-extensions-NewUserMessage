@@ -2,9 +2,10 @@
 	"@metadata": {
 		"authors": [
 			"Ebraminio",
-			"Huji"
+			"Huji",
+			"Beginneruser"
 		]
 	},
-	"newusermessage-desc": "یک پیغام در صفحهٔ بحث کاربرهای تازه ایجاد شده می‌افزاید",
+	"newusermessage-desc": "یک پیام در صفحهٔ بحث کاربرهای تازه ایجاد شده می‌افزاید",
 	"newuseredit-summary": "افزودن [[{{int:newusermessage-template}}|پیام خوش‌آمد]] به صفحهٔ بحث کاربر تازه"
 }
