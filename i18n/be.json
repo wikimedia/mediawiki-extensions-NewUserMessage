@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Chadyka"
+		]
+	},
+	"newusermessage-desc": "Дадае паведамленне на толькі што створаныя старонкі размоў удзельнікаў",
+	"newuseredit-summary": "Даданне [[{{int:newusermessage-template}}|прывітальнага паведамлення]] на старонку размоў новага ўдзельніка"
+}
