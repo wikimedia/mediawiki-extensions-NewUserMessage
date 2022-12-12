@@ -4,9 +4,10 @@
 			"Alexsh",
 			"Cwlin0416",
 			"Mark85296341",
-			"Winston Sung"
+			"Winston Sung",
+			"SunAfterRain"
 		]
 	},
 	"newusermessage-desc": "在新建立帳號的使用者的討論頁新增一則訊息。",
-	"newuseredit-summary": "在新使用者的對話頁面新增 [[{{int:newusermessage-template}}|歡迎訊息]]"
+	"newuseredit-summary": "在新使用者的討論頁上添加[[{{int:newusermessage-template}}|歡迎資訊]]"
 }
