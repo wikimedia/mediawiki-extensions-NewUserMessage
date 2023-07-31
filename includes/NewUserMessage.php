@@ -211,6 +211,10 @@ class NewUserMessage {
 	public static function onLocalUserCreated( User $user, $autocreated ) {
 		global $wgNewUserMessageOnAutoCreate;
 
+		if ( $user->isTemp() ) {
+			return true; // not a new registered user
+		}
+
 		if ( !$autocreated ) {
 			DeferredUpdates::addCallableUpdate(
 				static function () use ( $user ) {
