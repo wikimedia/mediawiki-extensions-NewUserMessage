@@ -17,9 +17,9 @@ use ContentHandler;
 use DeferredUpdates;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\RevisionRecord;
+use MediaWiki\Title\Title;
 use Message;
 use ParserOptions;
-use Title;
 use User;
 use WikiPage;
 
