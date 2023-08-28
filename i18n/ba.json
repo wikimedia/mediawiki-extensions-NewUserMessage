@@ -1,9 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Assele"
+			"Assele",
+			"З. ӘЙЛЕ"
 		]
 	},
 	"newusermessage-desc": "Яңы теркәлгән ҡатнашыусының фекер алышыу битенә хәбәр өҫтәй",
-	"newuseredit-summary": "Яңы теркәлгән ҡатнашыусының фекер алышыу битенә [[{{int:newusermessage-template}}|сәләмләү хәбәре]] өҫтәү"
+	"newuseredit-summary": "Яңы теркәлгән ҡатнашыусының фекер алышыу битенә [[{{int:newusermessage-template}}|сәләмләү]] өҫтәү"
 }
