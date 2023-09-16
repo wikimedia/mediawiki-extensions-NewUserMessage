@@ -24,12 +24,13 @@
 		"newUserMessageJob": "MediaWiki\\Extension\\NewUserMessage\\NewUserMessageJob"
 	},
 	"Hooks": {
-		"LocalUserCreated": [
-			"MediaWiki\\Extension\\NewUserMessage\\NewUserMessage::onLocalUserCreated"
-		],
-		"UserGetReservedNames": [
-			"MediaWiki\\Extension\\NewUserMessage\\NewUserMessage::onUserGetReservedNames"
-		]
+		"LocalUserCreated": "main",
+		"UserGetReservedNames": "main"
+	},
+	"HookHandlers": {
+		"main": {
+			"class": "MediaWiki\\Extension\\NewUserMessage\\NewUserMessage"
+		}
 	},
 	"config": {
 		"NewUserSuppressRC": {

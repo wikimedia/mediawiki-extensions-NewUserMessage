@@ -15,15 +15,20 @@ namespace MediaWiki\Extension\NewUserMessage;
 
 use ContentHandler;
 use DeferredUpdates;
+use MediaWiki\Auth\Hook\LocalUserCreatedHook;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Title\Title;
+use MediaWiki\User\Hook\UserGetReservedNamesHook;
 use Message;
 use ParserOptions;
 use User;
 use WikiPage;
 
-class NewUserMessage {
+class NewUserMessage implements
+	LocalUserCreatedHook,
+	UserGetReservedNamesHook
+{
 	/**
 	 * Produce the editor for new user messages.
 	 * @return User|bool
@@ -206,13 +211,12 @@ class NewUserMessage {
 	 * Hook function to create new user pages when an account is created or autocreated
 	 * @param User $user object of the user
 	 * @param bool $autocreated
-	 * @return bool
 	 */
-	public static function onLocalUserCreated( User $user, $autocreated ) {
+	public function onLocalUserCreated( $user, $autocreated ) {
 		global $wgNewUserMessageOnAutoCreate;
 
 		if ( $user->isTemp() ) {
-			return true; // not a new registered user
+			return; // not a new registered user
 		}
 
 		if ( !$autocreated ) {
@@ -230,18 +234,14 @@ class NewUserMessage {
 			MediaWikiServices::getInstance()->getJobQueueGroup()->lazyPush(
 				new NewUserMessageJob( [ 'userId' => $user->getId() ] ) );
 		}
-
-		return true;
 	}
 
 	/**
 	 * Hook function to provide a reserved name
 	 * @param array &$names
-	 * @return bool
 	 */
-	public static function onUserGetReservedNames( &$names ) {
+	public function onUserGetReservedNames( &$names ) {
 		$names[] = 'msg:newusermessage-editor';
-		return true;
 	}
 
 	/**
