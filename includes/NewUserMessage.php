@@ -290,7 +290,7 @@ class NewUserMessage implements
 	 */
 	protected static function formatUserMessage( $subject, $text, $signature ) {
 		$contents = "";
-		$signature = empty( $signature ) ? "~~~~" : "{$signature} ~~~~~";
+		$signature = $signature === '' ? "~~~~" : "{$signature} ~~~~~";
 
 		if ( $subject ) {
 			$contents .= "== $subject ==\n\n";
