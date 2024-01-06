@@ -11,7 +11,7 @@ namespace MediaWiki\Extension\NewUserMessage;
 
 use GenericParameterJob;
 use Job;
-use User;
+use MediaWiki\User\User;
 
 /**
  * Job to create the initial message on a user's talk page
