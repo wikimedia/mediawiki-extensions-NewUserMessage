@@ -10,6 +10,7 @@
 namespace MediaWiki\Extension\NewUserMessage;
 
 use GenericParameterJob;
+use IDBAccessObject;
 use Job;
 use MediaWiki\User\User;
 
@@ -29,7 +30,7 @@ class NewUserMessageJob extends Job implements GenericParameterJob {
 
 	public function run() {
 		$user = User::newFromId( $this->params['userId'] );
-		$user->load( $user::READ_LATEST );
+		$user->load( IDBAccessObject::READ_LATEST );
 		if ( !$user->getId() ) {
 			return false;
 		}
