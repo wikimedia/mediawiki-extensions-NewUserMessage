@@ -4,5 +4,6 @@
 			"IJzeren Jan"
 		]
 	},
-	"newusermessage-desc": "Dodavaje soobčenje na besědne stranice novyh koristnikov"
+	"newusermessage-desc": "Dodavaje soobčenje na besědne stranice novyh koristnikov",
+	"newuseredit-summary": "Dodanje [[{{int:newusermessage-template}}|pozdravnogo soobčenja]] na besědnu stranicu novogo koristnika"
 }
