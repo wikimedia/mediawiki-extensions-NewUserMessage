@@ -1,9 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Gazeb"
+			"Gazeb",
+			"Constraque"
 		]
 	},
-	"newusermessage-desc": "Додавать повідомлїня на діскузны сторінкы ново створеных хоснователїв",
-	"newuseredit-summary": "Приданя [[{{int:newusermessage-template}}|привітаня]] на діскузну сторінку нового хоснователя"
+	"newusermessage-desc": "Додає повідомлїня на діскусны сторінкы новоствореного хоснователя",
+	"newuseredit-summary": "Придати [[{{int:newusermessage-template}}|привітне повідомлїня]] на діскусну сторінку нового хоснователя"
 }
