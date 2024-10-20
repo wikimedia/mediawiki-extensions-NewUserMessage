@@ -13,16 +13,16 @@
 
 namespace MediaWiki\Extension\NewUserMessage;
 
-use ContentHandler;
 use MediaWiki\Auth\Hook\LocalUserCreatedHook;
+use MediaWiki\Content\ContentHandler;
 use MediaWiki\Deferred\DeferredUpdates;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Message\Message;
+use MediaWiki\Parser\ParserOptions;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Title\Title;
 use MediaWiki\User\Hook\UserGetReservedNamesHook;
 use MediaWiki\User\User;
-use ParserOptions;
 use WikiPage;
 
 class NewUserMessage implements
