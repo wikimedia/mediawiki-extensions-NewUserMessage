@@ -39,7 +39,8 @@ class NewUserMessage implements
 		$editor = User::newFromName( self::getMsg( 'newusermessage-editor' )->text() );
 
 		if ( !$editor ) {
-			return false; // Invalid username
+			// Invalid username
+			return false;
 		}
 
 		if ( !$editor->isRegistered() ) {
@@ -216,14 +217,16 @@ class NewUserMessage implements
 		global $wgNewUserMessageOnAutoCreate;
 
 		if ( $user->isTemp() ) {
-			return; // not a new registered user
+			// not a new registered user
+			return;
 		}
 
 		if ( !$autocreated ) {
 			DeferredUpdates::addCallableUpdate(
 				static function () use ( $user ) {
 					if ( $user->isBot() ) {
-						return; // not a human
+						// not a human
+						return;
 					}
 
 					NewUserMessage::createNewUserMessage( $user );
