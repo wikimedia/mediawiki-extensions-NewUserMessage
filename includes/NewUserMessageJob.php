@@ -28,6 +28,7 @@ class NewUserMessageJob extends Job implements GenericParameterJob {
 		parent::__construct( 'newUserMessageJob', $params );
 	}
 
+	/** @inheritDoc */
 	public function run() {
 		$user = User::newFromId( $this->params['userId'] );
 		$user->load( IDBAccessObject::READ_LATEST );
