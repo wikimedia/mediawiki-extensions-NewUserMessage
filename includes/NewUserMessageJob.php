@@ -9,8 +9,8 @@
 
 namespace MediaWiki\Extension\NewUserMessage;
 
-use GenericParameterJob;
-use Job;
+use MediaWiki\JobQueue\GenericParameterJob;
+use MediaWiki\JobQueue\Job;
 use MediaWiki\User\User;
 use Wikimedia\Rdbms\IDBAccessObject;
 
