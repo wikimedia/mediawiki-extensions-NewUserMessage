@@ -22,12 +22,14 @@ use MediaWiki\Message\Message;
 use MediaWiki\Page\WikiPage;
 use MediaWiki\Parser\ParserOptions;
 use MediaWiki\Revision\RevisionRecord;
+use MediaWiki\Storage\Hook\PageSaveCompleteHook;
 use MediaWiki\Title\Title;
 use MediaWiki\User\Hook\UserGetReservedNamesHook;
 use MediaWiki\User\User;
 
 class NewUserMessage implements
 	LocalUserCreatedHook,
+	PageSaveCompleteHook,
 	UserGetReservedNamesHook
 {
 	/**
@@ -238,6 +240,48 @@ class NewUserMessage implements
 			MediaWikiServices::getInstance()->getJobQueueGroup()->lazyPush(
 				new NewUserMessageJob( [ 'userId' => $user->getId() ] ) );
 		}
+	}
+
+	/**
+	 * Hook function to send a welcome message to autocreated users on their first
+	 * non-imported edit, when $wgNewUserMessageOnAutoCreateFirstEdit is enabled.
+	 *
+	 * @param WikiPage $wikiPage
+	 * @param \MediaWiki\User\UserIdentity $user
+	 * @param string $summary
+	 * @param int $flags
+	 * @param RevisionRecord $revisionRecord
+	 * @param \MediaWiki\Storage\EditResult $editResult
+	 */
+	public function onPageSaveComplete(
+		$wikiPage, $user, $summary, $flags, $revisionRecord, $editResult
+	) {
+		global $wgNewUserMessageOnAutoCreateFirstEdit;
+
+		if ( !$wgNewUserMessageOnAutoCreateFirstEdit ) {
+			return;
+		}
+
+		$services = MediaWikiServices::getInstance();
+		$fullUser = $services->getUserFactory()->newFromUserIdentity( $user );
+		if ( !$fullUser->isNamed() ) {
+			return;
+		}
+
+		$editCount = $services->getUserEditTracker()->getUserEditCount( $fullUser );
+		if ( $editCount > 1 ) {
+			return;
+		}
+
+		DeferredUpdates::addCallableUpdate(
+			static function () use ( $fullUser ) {
+				if ( $fullUser->isBot() ) {
+					return;
+				}
+				NewUserMessage::createNewUserMessage( $fullUser );
+			},
+			DeferredUpdates::POSTSEND
+		);
 	}
 
 	/**

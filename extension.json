@@ -25,6 +25,7 @@
 	},
 	"Hooks": {
 		"LocalUserCreated": "main",
+		"PageSaveComplete": "main",
 		"UserGetReservedNames": "main"
 	},
 	"HookHandlers": {
@@ -40,6 +41,9 @@
 			"value": true
 		},
 		"NewUserMessageOnAutoCreate": {
+			"value": false
+		},
+		"NewUserMessageOnAutoCreateFirstEdit": {
 			"value": false
 		}
 	},
