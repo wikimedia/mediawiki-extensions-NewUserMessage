@@ -244,7 +244,7 @@ class NewUserMessage implements
 
 	/**
 	 * Hook function to send a welcome message to autocreated users on their first
-	 * non-imported edit, when $wgNewUserMessageOnAutoCreateFirstEdit is enabled.
+	 * non-imported edit, when $wgNewUserMessageOnFirstEdit is enabled.
 	 *
 	 * @param WikiPage $wikiPage
 	 * @param \MediaWiki\User\UserIdentity $user
@@ -256,9 +256,9 @@ class NewUserMessage implements
 	public function onPageSaveComplete(
 		$wikiPage, $user, $summary, $flags, $revisionRecord, $editResult
 	) {
-		global $wgNewUserMessageOnAutoCreateFirstEdit;
+		global $wgNewUserMessageOnFirstEdit;
 
-		if ( !$wgNewUserMessageOnAutoCreateFirstEdit ) {
+		if ( !$wgNewUserMessageOnFirstEdit ) {
 			return;
 		}
 
