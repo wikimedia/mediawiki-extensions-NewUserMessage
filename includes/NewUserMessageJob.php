@@ -1,9 +1,8 @@
 <?php
-/** Extension:NewUserMessage
+/**
+ * Job for adding new user messages.
  *
  * @file
- * @ingroup Extensions
- *
  * @license GPL-2.0-or-later
  */
 
@@ -11,32 +10,35 @@ namespace MediaWiki\Extension\NewUserMessage;
 
 use MediaWiki\JobQueue\GenericParameterJob;
 use MediaWiki\JobQueue\Job;
-use MediaWiki\User\User;
+use MediaWiki\User\UserFactory;
 use Wikimedia\Rdbms\IDBAccessObject;
 
 /**
- * Job to create the initial message on a user's talk page
+ * @internal
  *
- * Required parameters:
+ * Job parameters:
  *   - userId: the user ID
  */
 class NewUserMessageJob extends Job implements GenericParameterJob {
-	/**
-	 * @param array $params
-	 */
-	public function __construct( array $params ) {
+
+	public function __construct(
+		array $params,
+		private readonly UserFactory $userFactory,
+		private readonly NewUserMessage $newUserMessage,
+	) {
 		parent::__construct( 'newUserMessageJob', $params );
 	}
 
 	/** @inheritDoc */
-	public function run() {
-		$user = User::newFromId( $this->params['userId'] );
+	public function run(): bool {
+		$user = $this->userFactory->newFromId( $this->params['userId'] );
 		$user->load( IDBAccessObject::READ_LATEST );
+
 		if ( !$user->getId() ) {
 			return false;
 		}
 
-		NewUserMessage::createNewUserMessage( $user );
+		$this->newUserMessage->createNewUserMessage( $user );
 
 		return true;
 	}

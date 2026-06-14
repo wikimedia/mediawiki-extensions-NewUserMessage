@@ -21,7 +21,13 @@
 		"MediaWiki\\Extension\\NewUserMessage\\": "includes/"
 	},
 	"JobClasses": {
-		"newUserMessageJob": "MediaWiki\\Extension\\NewUserMessage\\NewUserMessageJob"
+		"newUserMessageJob": {
+			"class": "MediaWiki\\Extension\\NewUserMessage\\NewUserMessageJob",
+			"services": [
+				"UserFactory",
+				"NewUserMessage.HookHandler"
+			]
+		}
 	},
 	"Hooks": {
 		"LocalUserCreated": "main",
@@ -30,9 +36,21 @@
 	},
 	"HookHandlers": {
 		"main": {
-			"class": "MediaWiki\\Extension\\NewUserMessage\\NewUserMessage"
+			"class": "MediaWiki\\Extension\\NewUserMessage\\NewUserMessage",
+			"services": [
+				"MainConfig",
+				"UserFactory",
+				"UserEditTracker",
+				"WikiPageFactory",
+				"JobQueueGroup",
+				"TitleFactory",
+				"Parser"
+			]
 		}
 	},
+	"ServiceWiringFiles": [
+		"includes/ServiceWiring.php"
+	],
 	"config": {
 		"NewUserSuppressRC": {
 			"value": false

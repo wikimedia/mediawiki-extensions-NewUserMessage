@@ -14,32 +14,51 @@
 namespace MediaWiki\Extension\NewUserMessage;
 
 use MediaWiki\Auth\Hook\LocalUserCreatedHook;
+use MediaWiki\Config\Config;
 use MediaWiki\Content\ContentHandler;
 use MediaWiki\Content\TextContent;
 use MediaWiki\Deferred\DeferredUpdates;
-use MediaWiki\MediaWikiServices;
+use MediaWiki\JobQueue\JobQueueGroup;
+use MediaWiki\JobQueue\JobSpecification;
 use MediaWiki\Message\Message;
 use MediaWiki\Page\WikiPage;
+use MediaWiki\Page\WikiPageFactory;
+use MediaWiki\Parser\Parser;
 use MediaWiki\Parser\ParserOptions;
 use MediaWiki\Revision\RevisionRecord;
+use MediaWiki\Storage\EditResult;
 use MediaWiki\Storage\Hook\PageSaveCompleteHook;
 use MediaWiki\Title\Title;
+use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\Hook\UserGetReservedNamesHook;
 use MediaWiki\User\User;
+use MediaWiki\User\UserEditTracker;
+use MediaWiki\User\UserFactory;
+use MediaWiki\User\UserIdentity;
 
 class NewUserMessage implements
 	LocalUserCreatedHook,
 	PageSaveCompleteHook,
 	UserGetReservedNamesHook
 {
+	public function __construct(
+		private readonly Config $config,
+		private readonly UserFactory $userFactory,
+		private readonly UserEditTracker $userEditTracker,
+		private readonly WikiPageFactory $wikiPageFactory,
+		private readonly JobQueueGroup $jobQueueGroup,
+		private readonly TitleFactory $titleFactory,
+		private readonly Parser $parser,
+	) {
+	}
+
 	/**
 	 * Produce the editor for new user messages.
-	 * @return User|bool
 	 */
-	private static function fetchEditor() {
-		// Create a user object for the editing user and add it to the
-		// database if it is not there already
-		$editor = User::newFromName( self::getMsg( 'newusermessage-editor' )->text() );
+	private function fetchEditor(): User|false {
+		$editor = $this->userFactory->newFromName(
+			$this->getMsg( 'newusermessage-editor' )->text()
+		);
 
 		if ( !$editor ) {
 			// Invalid username
@@ -55,19 +74,19 @@ class NewUserMessage implements
 
 	/**
 	 * Produce a (possibly random) signature.
-	 * @return string
 	 */
-	private static function fetchSignature() {
-		$signatures = self::getMsg( 'newusermessage-signatures' )->text();
+	private function fetchSignature(): string {
 		$signature = '';
+		$signaturesMsg = $this->getMsg( 'newusermessage-signatures' );
 
-		if ( !self::getMsg( 'newusermessage-signatures' )->isDisabled() ) {
+		if ( !$signaturesMsg->isDisabled() ) {
 			$pattern = '/^\* ?(.*?)$/m';
 			$signatureList = [];
+			$signatures = $signaturesMsg->text();
 			preg_match_all( $pattern, $signatures, $signatureList, PREG_SET_ORDER );
+
 			if ( count( $signatureList ) > 0 ) {
-				$rand = rand( 0, count( $signatureList ) - 1 );
-				$signature = $signatureList[$rand][1];
+				$signature = $signatureList[mt_rand( 0, count( $signatureList ) - 1 )][1];
 			}
 		}
 
@@ -76,63 +95,56 @@ class NewUserMessage implements
 
 	/**
 	 * Return the template name if it exists, or '' otherwise.
-	 * @param string $template string with page name of user message template
-	 * @return string
 	 */
-	private static function fetchTemplateIfExists( $template ) {
-		$text = Title::newFromText( $template );
+	private function fetchTemplateIfExists( string $template ): string {
+		$title = $this->titleFactory->newFromText( $template );
 
-		if ( !$text ) {
+		if ( !$title ) {
 			wfDebug( __METHOD__ . ": '$template' is not a valid title.\n" );
 			return '';
-		} elseif ( $text->getNamespace() !== NS_TEMPLATE ) {
+		} elseif ( $title->getNamespace() !== NS_TEMPLATE ) {
 			wfDebug( __METHOD__ . ": '$template' is not a valid Template.\n" );
 			return '';
-		} elseif ( !$text->exists() ) {
+		} elseif ( !$title->exists() ) {
 			return '';
 		}
 
-		return $text->getText();
+		return $title->getText();
 	}
 
 	/**
 	 * Produce a subject for the message.
-	 * @return string
 	 */
-	private static function fetchSubject() {
-		return self::fetchTemplateIfExists(
-			self::getMsg( 'newusermessage-template-subject' )->text()
+	private function fetchSubject(): string {
+		return $this->fetchTemplateIfExists(
+			$this->getMsg( 'newusermessage-template-subject' )->text()
 		);
 	}
 
 	/**
 	 * Produce the template that contains the text of the message.
-	 * @return string
 	 */
-	private static function fetchText() {
-		$template = self::getMsg( 'newusermessage-template-body' )->text();
+	private function fetchText(): string {
+		$template = $this->getMsg( 'newusermessage-template-body' )->text();
 
-		$title = Title::newFromText( $template );
+		$title = $this->titleFactory->newFromText( $template );
 		if ( $title && $title->exists() && $title->getLength() ) {
 			return $template;
 		}
 
 		// Fall back if necessary to the old template
-		return self::getMsg( 'newusermessage-template' )->text();
+		return $this->getMsg( 'newusermessage-template' )->text();
 	}
 
 	/**
 	 * Produce the flags to set on WikiPage::doUserEditContent
-	 * @return int
 	 */
-	private static function fetchFlags() {
-		global $wgNewUserMinorEdit, $wgNewUserSuppressRC;
-
+	private function fetchFlags(): int {
 		$flags = EDIT_NEW;
-		if ( $wgNewUserMinorEdit ) {
+		if ( $this->config->get( 'NewUserMinorEdit' ) ) {
 			$flags |= EDIT_MINOR;
 		}
-		if ( $wgNewUserSuppressRC ) {
+		if ( $this->config->get( 'NewUserSuppressRC' ) ) {
 			$flags |= EDIT_SUPPRESS_RC;
 		}
 
@@ -140,21 +152,23 @@ class NewUserMessage implements
 	}
 
 	/**
-	 * Take care of substition on the string in a uniform manner
-	 * @param string $str
-	 * @param User $user
-	 * @param User $editor
-	 * @param Title $talk
-	 * @param string|null $preparse If provided, then preparse the string using a Parser
-	 * @return string
+	 * Take care of substitution on the string in a uniform manner
+	 *
+	 * if $preparse is true, preparse the string using a Parser
 	 */
-	private static function substString( $str, $user, $editor, $talk, $preparse = null ) {
+	private function substString(
+		string $str,
+		User $user,
+		User $editor,
+		Title $talk,
+		bool $preparse = false
+	): string {
 		$realName = $user->getRealName();
 		$name = $user->getName();
 
 		// Add (any) content to [[MediaWiki:Newusermessage-substitute]] to substitute the
 		// welcome template.
-		$substDisabled = self::getMsg( 'newusermessage-substitute' )->isDisabled();
+		$substDisabled = $this->getMsg( 'newusermessage-substitute' )->isDisabled();
 
 		if ( $substDisabled ) {
 			$str = '{{' . "$str|realName=$realName|name=$name}}";
@@ -163,11 +177,11 @@ class NewUserMessage implements
 		}
 
 		if ( $preparse ) {
-			$str = MediaWikiServices::getInstance()->getParser()->preSaveTransform(
+			$str = $this->parser->preSaveTransform(
 				$str,
 				$talk,
 				$editor,
-				new ParserOptions( $user )
+				ParserOptions::newFromUser( $user )
 			);
 		}
 
@@ -175,38 +189,38 @@ class NewUserMessage implements
 	}
 
 	/**
-	 * Add the message if the users talk page does not already exist
-	 * @param User $user User object
-	 * @return bool
+	 * Add the message if the user's talk page does not already exist
 	 */
-	public static function createNewUserMessage( $user ) {
+	public function createNewUserMessage( User $user ): bool {
 		$talk = $user->getTalkPage();
 
 		// Only leave message if user doesn't have a talk page yet
 		if ( !$talk->exists() ) {
-			$wikiPage = MediaWikiServices::getInstance()->getWikiPageFactory()->newFromTitle( $talk );
-			$subject = self::fetchSubject();
-			$text = self::fetchText();
-			$signature = self::fetchSignature();
-			$editSummary = self::getMsg( 'newuseredit-summary' )->text();
-			$editor = self::fetchEditor();
-			$flags = self::fetchFlags();
+			$editor = $this->fetchEditor();
 
-			# Do not add a message if the username is invalid or if the account that adds it,
-			# is blocked
+			// Do not add a message if the username is invalid or if the account that adds it,
+			// is blocked
 			if ( !$editor || $editor->getBlock() ) {
 				return true;
 			}
 
+			$wikiPage = $this->wikiPageFactory->newFromTitle( $talk );
+			$subject = $this->fetchSubject();
+			$text = $this->fetchText();
+			$signature = $this->fetchSignature();
+			$editSummary = $this->getMsg( 'newuseredit-summary' )->text();
+			$flags = $this->fetchFlags();
+
 			if ( $subject ) {
-				$subject = self::substString( $subject, $user, $editor, $talk, "preparse" );
+				$subject = $this->substString( $subject, $user, $editor, $talk, true );
 			}
 			if ( $text ) {
-				$text = self::substString( $text, $user, $editor, $talk );
+				$text = $this->substString( $text, $user, $editor, $talk );
 			}
 
-			self::leaveUserMessage( $user, $wikiPage, $subject, $text,
-				$signature, $editSummary, $editor, $flags );
+			$this->leaveUserMessage(
+				$user, $wikiPage, $subject, $text, $signature, $editSummary, $editor, $flags
+			);
 		}
 		return true;
 	}
@@ -216,9 +230,7 @@ class NewUserMessage implements
 	 * @param User $user object of the user
 	 * @param bool $autocreated
 	 */
-	public function onLocalUserCreated( $user, $autocreated ) {
-		global $wgNewUserMessageOnAutoCreate;
-
+	public function onLocalUserCreated( $user, $autocreated ): void {
 		if ( $user->isTemp() ) {
 			// not a new registered user
 			return;
@@ -226,19 +238,23 @@ class NewUserMessage implements
 
 		if ( !$autocreated ) {
 			DeferredUpdates::addCallableUpdate(
-				static function () use ( $user ) {
+				function () use ( $user ) {
 					if ( $user->isBot() ) {
 						// not a human
 						return;
 					}
 
-					NewUserMessage::createNewUserMessage( $user );
+					$this->createNewUserMessage( $user );
 				},
 				DeferredUpdates::PRESEND
 			);
-		} elseif ( $wgNewUserMessageOnAutoCreate ) {
-			MediaWikiServices::getInstance()->getJobQueueGroup()->lazyPush(
-				new NewUserMessageJob( [ 'userId' => $user->getId() ] ) );
+		} elseif ( $this->config->get( 'NewUserMessageOnAutoCreate' ) ) {
+			$this->jobQueueGroup->lazyPush(
+				new JobSpecification(
+					'newUserMessageJob',
+					[ 'userId' => $user->getId() ]
+				)
+			);
 		}
 	}
 
@@ -247,38 +263,37 @@ class NewUserMessage implements
 	 * non-imported edit, when $wgNewUserMessageOnFirstEdit is enabled.
 	 *
 	 * @param WikiPage $wikiPage
-	 * @param \MediaWiki\User\UserIdentity $user
+	 * @param UserIdentity $user
 	 * @param string $summary
 	 * @param int $flags
 	 * @param RevisionRecord $revisionRecord
-	 * @param \MediaWiki\Storage\EditResult $editResult
+	 * @param EditResult $editResult
 	 */
 	public function onPageSaveComplete(
 		$wikiPage, $user, $summary, $flags, $revisionRecord, $editResult
-	) {
-		global $wgNewUserMessageOnFirstEdit;
-
-		if ( !$wgNewUserMessageOnFirstEdit ) {
+	): void {
+		if ( !$this->config->get( 'NewUserMessageOnFirstEdit' ) ) {
 			return;
 		}
 
-		$services = MediaWikiServices::getInstance();
-		$fullUser = $services->getUserFactory()->newFromUserIdentity( $user );
+		$fullUser = $this->userFactory->newFromUserIdentity( $user );
 		if ( !$fullUser->isNamed() ) {
 			return;
 		}
 
-		$editCount = $services->getUserEditTracker()->getUserEditCount( $fullUser );
+		$editCount = $this->userEditTracker->getUserEditCount( $fullUser );
+		// PageSaveComplete runs after the triggering edit has already been counted,
+		// so the user's first edit has edit count 1 here
 		if ( $editCount > 1 ) {
 			return;
 		}
 
 		DeferredUpdates::addCallableUpdate(
-			static function () use ( $fullUser ) {
+			function () use ( $fullUser ) {
 				if ( $fullUser->isBot() ) {
 					return;
 				}
-				NewUserMessage::createNewUserMessage( $fullUser );
+				$this->createNewUserMessage( $fullUser );
 			},
 			DeferredUpdates::POSTSEND
 		);
@@ -288,7 +303,7 @@ class NewUserMessage implements
 	 * Hook function to provide a reserved name
 	 * @param array &$names
 	 */
-	public function onUserGetReservedNames( &$names ) {
+	public function onUserGetReservedNames( &$names ): void {
 		$names[] = 'msg:newusermessage-editor';
 	}
 
@@ -307,10 +322,17 @@ class NewUserMessage implements
 	 *
 	 * @return bool true if it was successful
 	 */
-	public static function leaveUserMessage( $user, $wikiPage, $subject, $text, $signature,
-			$summary, $editor, $flags
-	) {
-		$text = self::formatUserMessage( $subject, $text, $signature );
+	public function leaveUserMessage(
+		User $user,
+		WikiPage $wikiPage,
+		string $subject,
+		string $text,
+		string $signature,
+		string $summary,
+		User $editor,
+		int $flags
+	): bool {
+		$text = $this->formatUserMessage( $subject, $text, $signature );
 		$flags = $wikiPage->checkFlags( $flags );
 
 		if ( $flags & EDIT_UPDATE ) {
@@ -336,7 +358,7 @@ class NewUserMessage implements
 	 * @param string $signature the signature, if provided.
 	 * @return string in wiki text with complete user message
 	 */
-	protected static function formatUserMessage( $subject, $text, $signature ) {
+	protected function formatUserMessage( string $subject, string $text, string $signature ): string {
 		$contents = "";
 		$signature = $signature === '' ? "~~~~" : "{$signature} ~~~~~";
 
@@ -348,11 +370,7 @@ class NewUserMessage implements
 		return $contents;
 	}
 
-	/**
-	 * @param string $name
-	 * @return Message
-	 */
-	protected static function getMsg( $name ) {
+	protected function getMsg( string $name ): Message {
 		return wfMessage( $name )->inContentLanguage();
 	}
 }
