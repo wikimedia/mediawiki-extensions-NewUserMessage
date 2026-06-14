@@ -168,10 +168,16 @@ class NewUserMessage implements
 		// welcome template.
 		$substDisabled = $this->getMsg( 'newusermessage-substitute' )->isDisabled();
 
+		// only pass realName if its not empty, so fallback syntax works
+		$params = "name=$name";
+		if ( $realName !== '' ) {
+			$params .= "|realName=$realName";
+		}
+
 		if ( $substDisabled ) {
-			$str = '{{' . "$str|realName=$realName|name=$name}}";
+			$str = '{{' . "$str|$params}}";
 		} else {
-			$str = '{{subst:' . "$str|realName=$realName|name=$name}}";
+			$str = '{{subst:' . "$str|$params}}";
 		}
 
 		if ( $preparse ) {
