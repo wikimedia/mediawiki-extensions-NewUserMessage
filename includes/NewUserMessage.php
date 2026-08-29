@@ -16,7 +16,6 @@ namespace MediaWiki\Extension\NewUserMessage;
 use MediaWiki\Auth\Hook\LocalUserCreatedHook;
 use MediaWiki\Config\Config;
 use MediaWiki\Content\ContentHandler;
-use MediaWiki\Content\TextContent;
 use MediaWiki\Deferred\DeferredUpdates;
 use MediaWiki\JobQueue\JobQueueGroup;
 use MediaWiki\JobQueue\JobSpecification;
@@ -333,14 +332,6 @@ class NewUserMessage implements
 		int $flags
 	): bool {
 		$text = $this->formatUserMessage( $subject, $text, $signature );
-		$flags = $wikiPage->checkFlags( $flags );
-
-		if ( $flags & EDIT_UPDATE ) {
-			$content = $wikiPage->getContent( RevisionRecord::RAW );
-			if ( $content !== null && $content instanceof TextContent ) {
-				$text = $content->getText() . "\n" . $text;
-			}
-		}
 
 		$status = $wikiPage->doUserEditContent(
 			ContentHandler::makeContent( $text, $wikiPage->getTitle() ),
