@@ -143,7 +143,7 @@ class NewUserMessage implements
 			$flags |= EDIT_MINOR;
 		}
 		if ( $this->config->get( 'NewUserSuppressRC' ) ) {
-			$flags |= EDIT_SUPPRESS_RC;
+			$flags |= EDIT_SILENT;
 		}
 
 		return $flags;
