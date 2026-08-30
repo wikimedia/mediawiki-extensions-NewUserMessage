@@ -20,14 +20,13 @@ use MediaWiki\Deferred\DeferredUpdates;
 use MediaWiki\JobQueue\JobQueueGroup;
 use MediaWiki\JobQueue\JobSpecification;
 use MediaWiki\Message\Message;
+use MediaWiki\Page\PageReference;
 use MediaWiki\Page\WikiPage;
 use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Parser\Parser;
 use MediaWiki\Parser\ParserOptions;
-use MediaWiki\Revision\RevisionRecord;
-use MediaWiki\Storage\EditResult;
+use MediaWiki\Permissions\Authority;
 use MediaWiki\Storage\Hook\PageSaveCompleteHook;
-use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\Hook\UserGetReservedNamesHook;
 use MediaWiki\User\User;
@@ -158,8 +157,8 @@ class NewUserMessage implements
 	private function substString(
 		string $str,
 		User $user,
-		User $editor,
-		Title $talk,
+		UserIdentity $editor,
+		PageReference $talk,
 		bool $preparse = false
 	): string {
 		$realName = $user->getRealName();
@@ -218,7 +217,7 @@ class NewUserMessage implements
 			}
 
 			$this->leaveUserMessage(
-				$user, $wikiPage, $subject, $text, $signature, $editSummary, $editor, $flags
+				$wikiPage, $subject, $text, $signature, $editSummary, $editor, $flags
 			);
 		}
 		return true;
@@ -226,8 +225,7 @@ class NewUserMessage implements
 
 	/**
 	 * Hook function to create new user pages when an account is created or autocreated
-	 * @param User $user object of the user
-	 * @param bool $autocreated
+	 * @inheritDoc
 	 */
 	public function onLocalUserCreated( $user, $autocreated ): void {
 		if ( $user->isTemp() ) {
@@ -261,12 +259,7 @@ class NewUserMessage implements
 	 * Hook function to send a welcome message to autocreated users on their first
 	 * non-imported edit, when $wgNewUserMessageOnFirstEdit is enabled.
 	 *
-	 * @param WikiPage $wikiPage
-	 * @param UserIdentity $user
-	 * @param string $summary
-	 * @param int $flags
-	 * @param RevisionRecord $revisionRecord
-	 * @param EditResult $editResult
+	 * @inheritDoc
 	 */
 	public function onPageSaveComplete(
 		$wikiPage, $user, $summary, $flags, $revisionRecord, $editResult
@@ -300,35 +293,33 @@ class NewUserMessage implements
 
 	/**
 	 * Hook function to provide a reserved name
-	 * @param array &$names
+	 * @inheritDoc
 	 */
-	public function onUserGetReservedNames( &$names ): void {
-		$names[] = 'msg:newusermessage-editor';
+	public function onUserGetReservedNames( &$reservedUsernames ): void {
+		$reservedUsernames[] = 'msg:newusermessage-editor';
 	}
 
 	/**
-	 * Leave a user a message
-	 * @param User $user User to message
+	 * Leave a message on a user talk page
 	 * @param WikiPage $wikiPage user talk page
 	 * @param string $subject string with the subject of the message
 	 * @param string $text string with the message to leave
 	 * @param string $signature string to leave in the signature
 	 * @param string $summary string with the summary for this change, defaults to
 	 *                        "Leave system message."
-	 * @param User $editor User leaving the message, defaults to
+	 * @param Authority $editor User leaving the message, defaults to
 	 *                        "{{MediaWiki:usermessage-editor}}"
 	 * @param int $flags default edit flags
 	 *
 	 * @return bool true if it was successful
 	 */
 	public function leaveUserMessage(
-		User $user,
 		WikiPage $wikiPage,
 		string $subject,
 		string $text,
 		string $signature,
 		string $summary,
-		User $editor,
+		Authority $editor,
 		int $flags
 	): bool {
 		$text = $this->formatUserMessage( $subject, $text, $signature );
