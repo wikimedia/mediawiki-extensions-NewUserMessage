@@ -8,7 +8,6 @@
 
 namespace MediaWiki\Extension\NewUserMessage;
 
-use MediaWiki\JobQueue\GenericParameterJob;
 use MediaWiki\JobQueue\Job;
 use MediaWiki\User\UserFactory;
 use Wikimedia\Rdbms\IDBAccessObject;
@@ -19,7 +18,7 @@ use Wikimedia\Rdbms\IDBAccessObject;
  * Job parameters:
  *   - userId: the user ID
  */
-class NewUserMessageJob extends Job implements GenericParameterJob {
+class NewUserMessageJob extends Job {
 
 	public function __construct(
 		array $params,

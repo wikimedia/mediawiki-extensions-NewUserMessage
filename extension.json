@@ -26,7 +26,8 @@
 			"services": [
 				"UserFactory",
 				"NewUserMessage.HookHandler"
-			]
+			],
+			"needsPage": false
 		}
 	},
 	"Hooks": {
