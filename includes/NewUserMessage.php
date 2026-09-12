@@ -54,17 +54,14 @@ class NewUserMessage implements
 	 * Produce the editor for new user messages.
 	 */
 	private function fetchEditor(): User|false {
-		$editor = $this->userFactory->newFromName(
-			$this->getMsg( 'newusermessage-editor' )->text()
+		$editor = User::newSystemUser(
+			$this->getMsg( 'newusermessage-editor' )->text(),
+			[ 'steal' => true ]
 		);
 
 		if ( !$editor ) {
 			// Invalid username
 			return false;
-		}
-
-		if ( !$editor->isRegistered() ) {
-			$editor->addToDatabase();
 		}
 
 		return $editor;
