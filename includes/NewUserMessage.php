@@ -16,7 +16,6 @@ namespace MediaWiki\Extension\NewUserMessage;
 use MediaWiki\Auth\Hook\LocalUserCreatedHook;
 use MediaWiki\Config\Config;
 use MediaWiki\Content\ContentHandler;
-use MediaWiki\Deferred\DeferredUpdates;
 use MediaWiki\JobQueue\JobQueueGroup;
 use MediaWiki\JobQueue\JobSpecification;
 use MediaWiki\Message\Message;
@@ -150,6 +149,18 @@ class NewUserMessage implements
 	}
 
 	/**
+	 * Queue creation of a new user message outside the triggering web request.
+	 */
+	private function queueNewUserMessage( UserIdentity $user ): void {
+		$this->jobQueueGroup->lazyPush(
+			new JobSpecification(
+				'newUserMessageJob',
+				[ 'userId' => $user->getId() ]
+			)
+		);
+	}
+
+	/**
 	 * Take care of substitution on the string in a uniform manner
 	 *
 	 * if $preparse is true, preparse the string using a Parser
@@ -239,26 +250,15 @@ class NewUserMessage implements
 			return;
 		}
 
-		if ( !$autocreated ) {
-			DeferredUpdates::addCallableUpdate(
-				function () use ( $user ) {
-					if ( $user->isBot() ) {
-						// not a human
-						return;
-					}
-
-					$this->createNewUserMessage( $user );
-				},
-				DeferredUpdates::PRESEND
-			);
-		} elseif ( $this->config->get( 'NewUserMessageOnAutoCreate' ) ) {
-			$this->jobQueueGroup->lazyPush(
-				new JobSpecification(
-					'newUserMessageJob',
-					[ 'userId' => $user->getId() ]
-				)
-			);
+		if ( $autocreated && !$this->config->get( 'NewUserMessageOnAutoCreate' ) ) {
+			return;
 		}
+
+		if ( $user->isBot() ) {
+			// not a human
+			return;
+		}
+		$this->queueNewUserMessage( $user );
 	}
 
 	/**
@@ -286,15 +286,11 @@ class NewUserMessage implements
 			return;
 		}
 
-		DeferredUpdates::addCallableUpdate(
-			function () use ( $fullUser ) {
-				if ( $fullUser->isBot() ) {
-					return;
-				}
-				$this->createNewUserMessage( $fullUser );
-			},
-			DeferredUpdates::POSTSEND
-		);
+		if ( $fullUser->isBot() ) {
+			return;
+		}
+
+		$this->queueNewUserMessage( $fullUser );
 	}
 
 	/**
