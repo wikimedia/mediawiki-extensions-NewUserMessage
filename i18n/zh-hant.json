@@ -3,11 +3,12 @@
 		"authors": [
 			"Alexsh",
 			"Cwlin0416",
+			"LowensteinYang",
 			"Mark85296341",
 			"SunAfterRain",
 			"Winston Sung"
 		]
 	},
-	"newusermessage-desc": "在新建立帳號的使用者的討論頁新增一則訊息。",
-	"newuseredit-summary": "在新使用者的討論頁上添加[[{{int:newusermessage-template}}|歡迎資訊]]"
+	"newusermessage-desc": "新增一則訊息到新建立使用者的討論頁中。",
+	"newuseredit-summary": "在新使用者的討論頁上加入[[{{int:newusermessage-template}}|歡迎資訊]]"
 }
